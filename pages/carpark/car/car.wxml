@@ -1,0 +1,64 @@
+<!--pages/carpark/car/car.wxml-->
+<view class="normal-container" style='padding:20rpx 50rpx;'>
+  <view hidden='{{!recordInfo}}' class="carpark-search-nonumcard" style='margin-top:30rpx;'>
+    <view class="carpark-search-nonumcard-panel color-border">
+      <!-- <view class="normal-panel-title">
+        您的入场车辆
+      </view> -->
+      <view class="carpark-search-nonumcard-content">
+        <view class='color-subcontent'>当前在停车辆</view>
+        <view class="carpark-search-nonumcard-title color-red">{{recordInfo.licensePlateNumber}}</view>
+        <view class="carpark-search-nonumcard-left">
+          <view class="nonum-carnum-font24 color-subcontent">进场时间</view>
+          <view style='margin-top:10rpx;' class="color-content">{{recordInfo.entryTime }}</view>
+        </view>
+        <view class="carpark-search-nonumcard-right">
+          <view class="nonum-carnum-font24 color-subcontent">闸机口</view>
+          <view style='margin-top:10rpx;' class="color-content">{{recordInfo.entryName || recordInfo.entryNo}}</view>
+        </view>
+        <view style='clear:both;'></view>
+      </view>
+      <!-- <view class="carpark-search-nonumcard-toolbar">
+        <view class="color-subcontent">
+          您的好友给您共享了他的在停车辆，
+        </view>
+      </view> -->
+      <view class="normal-panel-btnform">
+        <button type="primary" bindtap='acceptShare'>
+          接受
+        </button>
+      </view>
+      <!-- <view class="carpark-search-nonumcard-toolbar">
+        <view class="carpark-search-nonumcard-left">
+          <button class="sharebtn" open-type='share'>
+            <i-icon size="20" color="#ff9900" type="group"></i-icon>
+            <text style='margin-left:10rpx;' class="color-content">共享</text>
+          </button>
+        </view>
+        <view bindtap="goPay" class="carpark-search-nonumcard-right">
+          <button class="sharebtn">
+            <i-icon size="20" color="#19be6b" type="financial_fill"></i-icon>
+            <text style='margin-left:10rpx;' class="color-content">缴费</text>
+          </button>
+        </view>
+        <view style='clear:both;'></view>
+      </view> -->
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+  </view>
+  <view hidden='{{recordid}}' class="normal-panel">
+    <view class="normal-panel-title">
+      抱歉
+    </view>
+    <view class="normal-panel-desc">
+      没找到分享给您的在停车辆
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap="backToHome">
+        返回首页
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+</view>
+<i-toast id="toast" />

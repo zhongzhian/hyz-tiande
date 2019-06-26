@@ -1,0 +1,377 @@
+/* pages/carpark/handSearch/handSearch.wxss */
+
+.index-history-view {
+  padding: 0px;
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #495060;
+}
+
+.index-history-view-item {
+  display: inline-block;
+  padding: 10rpx 20rpx;
+  border: solid 2rpx #2d8cf0;
+  border-radius: 30rpx;
+  background: #fff;
+  margin: 0rpx 10rpx;
+}
+
+.carnum-tab-datebtn {
+  margin-bottom: 10rpx;
+  width: 300rpx;
+  display: inline-block;
+  padding: 10rpx 20rpx;
+  border: 2rpx solid #dddee1;
+  font-size: 32rpx;
+  color: #2d8cf0;
+  height: 48rpx;
+  line-height: 48rpx;
+  background-color: #fff;
+  border-radius: 32rpx;
+}
+
+.date-input {
+  text-align: center;
+  width: 300rpx;
+}
+
+.carnum-tab-btn {
+  margin-bottom: 10rpx;
+  width: 200rpx;
+  display: inline-block;
+  padding: 10rpx 20rpx;
+  border: 2rpx solid #dddee1;
+  font-size: 32rpx;
+  color: #2d8cf0;
+  height: 48rpx;
+  line-height: 48rpx;
+  background-color: #fff;
+}
+
+.leftbtn {
+  border-top-left-radius: 32rpx;
+  border-bottom-left-radius: 32rpx;
+}
+
+.rightbtn {
+  border-top-right-radius: 32rpx;
+  border-bottom-right-radius: 32rpx;
+}
+
+.left-input {
+  text-align: right;
+}
+
+.activebtn {
+  background-color: #dddee1;
+  color: #fff;
+  /* border:1px solid #dddee1; */
+}
+
+.numtime-tab {
+  width: 100%;
+}
+
+.formbtn {
+  padding: 20rpx 50rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.step-btn {
+  text-align: center;
+  font-size: 60rpx;
+}
+
+/* .formbtn button {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  background-color: #576b95;
+} */
+
+.iconview-refresh {
+  position: absolute;
+  bottom: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  /* border:solid 1px #2d8cf0; */
+  color: #2d8cf0;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.carnum-form {
+  padding: 10rpx;
+  position: relative;
+  width: 660rpx;
+  text-align: center;
+}
+
+.carnum-form-point-view {
+  display: inline-block;
+  width: 30rpx;
+  text-align: top;
+  position: relative;
+}
+
+.carnum-form-point {
+  position: absolute;
+  top: 24rpx;
+  left: 175rpx;
+  width: 10rpx;
+  height: 10rpx;
+  background-color: #222;
+  border-radius: 4rpx;
+  margin: 20rpx 10rpx;
+}
+
+/* .carnum-form-point {
+  display: inline-block;
+  border: none;
+  height: 70rpx;
+  width: 20rpx;
+  margin: 0;
+  text-align: center;
+  padding: 0;
+  line-height: 70rpx;
+  font-size: 50rpx;
+  color:#222;
+}
+.carnum-form-point::after {
+  border: none;
+} */
+
+.carnum-form-input {
+  display: inline-block;
+  border: 2rpx solid #1296db;
+  border-radius: 10rpx;
+  height: 70rpx;
+  width: 70rpx;
+  margin: 4rpx;
+  text-align: center;
+  background-color: #fff;
+  padding: 0;
+  line-height: 70rpx;
+}
+
+.carnum-form-input::after {
+  border: none;
+}
+
+.carnum-form-input2 {
+  display: inline-block;
+  border: 2rpx solid #1296db;
+  border-radius: 10rpx;
+  /* border-bottom: 1px solid #1296db; */
+  height: 70rpx;
+  width: 70rpx;
+  margin: 4rpx 10rpx;
+  text-align: center;
+  background-color: #fff;
+  padding: 0;
+  line-height: 70rpx;
+}
+
+.carnum-form-input2::after {
+  border: none;
+}
+
+.carnum-form-plus {
+  background-color: #09ff00;
+}
+
+.carnum-form-provice {
+  background-color: #ffd900 !important;
+}
+
+.carnum-form-text {
+  display: inline-block;
+  font-size: 60rpx;
+  line-height: 120rpx;
+  height: 120rpx;
+  width: 30rpx;
+  padding-bottom: 60rpx;
+}
+
+.input-panel {
+  padding: 40rpx 60rpx;
+}
+
+.input-panel-btn {
+  display: inline-block;
+  border: 2rpx solid #1296db;
+  border-radius: 10rpx;
+  height: 65rpx;
+  width: 55rpx;
+  margin: 8rpx;
+  text-align: center;
+  font-size: 30rpx;
+  padding: 0px;
+  line-height: 60rpx;
+  background-color: #fff;
+}
+
+.input-panel-btn::after {
+  border: none;
+}
+
+.page-head {
+  padding: 50rpx 50rpx 20rpx;
+  text-align: center;
+}
+
+.page-head-title {
+  display: inline-block;
+  padding: 0 40rpx 20rpx 40rpx;
+  font-size: 32rpx;
+  color: #bebebe;
+}
+
+.page-head-result {
+  display: inline-block;
+  padding: 0 40rpx 20rpx 40rpx;
+  color: #1c2438;
+  font-size: 40rpx;
+}
+
+.page-head-line {
+  margin: 0 auto;
+  width: 150rpx;
+  height: 2rpx;
+  background-color: #d8d8d8;
+}
+
+.page-head-desc {
+  padding-top: 20rpx;
+  color: #9b9b9b;
+  font-size: 32rpx;
+}
+
+.result-body {
+  width: 100%;
+  position: absolute;
+  top: 200rpx;
+  height: 700rpx;
+}
+
+movable-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2400rpx;
+  width: 2400rpx;
+  background: #fff;
+  color: #1aad19;
+}
+
+movable-area {
+  height: 100%;
+  width: 100%;
+  background-color: #ccc;
+  overflow: hidden;
+}
+
+.text-box {
+  margin-bottom: 70rpx;
+  padding: 40rpx 0;
+  display: flex;
+  min-height: 300rpx;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30rpx;
+  color: #353535;
+  line-height: 2em;
+}
+
+.carposition {
+  width: 12rpx;
+  height: 12rpx;
+  border: solid 2rpx red;
+  border-radius: 6rpx;
+  background-color: red;
+  position: absolute;
+  left: 4420rpx;
+  top: 4440rpx;
+  margin-left: -6rpx;
+  margin-top: -6rpx;
+}
+
+.carposition-round {
+  width: 40rpx;
+  height: 40rpx;
+  border: solid 1px red;
+  border-radius: 10px;
+  position: absolute;
+  left: 4000rpx;
+  top: 4000rpx;
+  margin-left: -20rpx;
+  margin-top: -20rpx;
+}
+
+.index-carnum-pickerpanel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 450rpx;
+  bottom: 150rpx;
+}
+
+/* 无牌照关联车 */
+
+.carpark-search-nonumcard {
+  /* position: absolute;
+  top: 50rpx;
+  left: 50rpx;
+  right:50rpx; *//* padding:50rpx; */
+  width: 100%;
+}
+
+.carpark-search-nonumcard-panel {
+  position: relative;
+  background-color: #fff;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.carpark-search-nonumcard-content {
+  padding: 30rpx;
+}
+
+.carpark-search-nonumcard-title {
+  font-size: 60rpx;
+  padding: 20rpx;
+}
+
+.carpark-search-nonumcard-left, .carpark-search-nonumcard-right {
+  width: 49%;
+  /* height: 50rpx; */
+  float: left;
+}
+
+.carpark-search-nonumcard-toolbar {
+  border-top: 2rpx solid #dddee1;
+  padding: 20rpx;
+}
+
+.sharebtn {
+  padding: 0;
+  border: none !important;
+  background: none;
+  margin: 0;
+  display: inline-block;
+  line-height: 50rpx;
+}
+
+button[class="sharebtn"]::after {
+  border: 0;
+}

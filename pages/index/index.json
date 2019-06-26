@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "会员中心",
+  "navigationBarBackgroundColor": "#464854",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../dist/toast/index",
+    "i-button": "../../dist/button/index"
+  }
+}

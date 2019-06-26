@@ -1,0 +1,37 @@
+<!--pages/notice/emit/emit.wxml-->
+<import src="../../../common/foot.wxml" />
+<view class="normal-container">
+  <form bindsubmit="noticeSubmit" report-submit>
+    <view class="normal-panel" style='top:20rpx;'>
+      <view class="normal-panel-title">
+        新公告
+      </view>
+      <i-panel>
+        <!-- <i-input name="from" value="{{ notice.from }}" type="text" title="信息来源" disabled /> -->
+        <!-- <picker mode="date" value="{{noticeDate}}" bindchange="bindDateChange">
+          <i-input value="{{ noticeDate }}" disabled title="时间" placeholder="请选择时间" />
+        </picker> -->
+        <i-input name="region" value="{{ region }}" maxlength='32' type="text" title="地点" placeholder="请输入地点" />
+        <!-- <i-input name="phone" maxlength='11' value="{{ notice.telphone }}" type="number" title="信息内容" placeholder="请输入手机号" /> -->
+        <view class="notice-form-label">内容</view>
+        <view class="notice-form-content" style="height: 120px;">
+          <textarea name="content" class="notice-form-textarea" value="{{content}}" />
+        </view>
+        <view class="notice-form-label" >备注</view>
+        <view class="notice-form-content" style="height: 70px;">
+          <textarea name="remark" class="notice-form-textarea" value="{{remark}}" />
+        </view>
+      </i-panel>
+      <!-- <view class="normal-panel-desc">
+        提交申请后，请耐心等待审核。我们会在7天内通过微信的服务通知到您。谢谢
+      </view> -->
+      <view class="normal-panel-btnform">
+        <button formType="submit" type="primary">
+          发布
+        </button>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+  </form>
+</view>
+<i-toast id="toast" />

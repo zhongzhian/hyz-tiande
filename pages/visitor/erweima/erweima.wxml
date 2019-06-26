@@ -1,0 +1,52 @@
+<!--pages/home/visitor/invitation.wxml-->
+
+<view class="normal-container">
+  <!-- inviteStatus:被邀请人状态，1是未绑定过手机号，2是绑定过且有邀请函，3是绑定过但没有邀请函 -->
+  <!-- class="normal-panel" -->
+  <view hidden='{{!invitation}}' style='position:relative;background:#fff;'>
+    <!-- <view class="normal-panel-title">
+      邀请函
+    </view> -->
+    <view class="normal-panel-content" style='padding:100rpx 30rpx;position:relative;'>
+      <canvas class='erweima-canvas' canvas-id='canvas'></canvas>
+      <view wx:if="errorMsg" class="erweima-errorMsg color-red">{{errorMsg}}</view>
+    </view>
+    <view class="normal-panel-content" style='text-align:left;'>
+      <view style='padding-top:0;' class="invitation-rowtitle color-subcontent">邀请人</view>
+      <view class="invitation-row ">
+        {{ invitor.personName || '未署名' }}
+      </view>
+      <view class="invitation-row">
+        {{company + ' ' + invitor.organizationName }}
+      </view>
+      <view class="invitation-rowtitle color-subcontent">到访时间</view>
+      <view class="invitation-row">
+        {{ visitorTime }}
+      </view>
+      <view class="invitation-row">
+        {{ visitorStartTime + ' ~ ' + visitorEndTime }}
+      </view>
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap="goBack">
+        返回
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+  <view hidden='{{invitation}}' class="normal-panel">
+    <view class="normal-panel-title">
+      抱歉
+    </view>
+    <view class="normal-panel-desc text-center">
+      未查到该邀请函详情
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap="backToHome">
+        返回首页
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+
+</view>

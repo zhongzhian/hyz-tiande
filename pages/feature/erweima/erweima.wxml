@@ -1,0 +1,14 @@
+<!--pages/feature/erweima/erweima.wxml-->
+<view class="normal-container" style='background-color:#464854;'>
+  <view class="erweima-container color-bg">
+    <view class='erweima-code-title color-content'>天德门禁二维码</view>
+    <view class='erweima-code-subtitle color-subcontent'>进入天德大厦请出示二维码</view>
+    <!-- <image class="erweima-code-image" src="../../../image/kaikaerweima.jpg" mode="cover"></image> -->
+    <canvas class='erweima-canvas' canvas-id='canvas'></canvas>
+    <view wx:if="errorMsg" class="erweima-errorMsg">{{errorMsg}}</view>
+    <view hidden='{{errorMsg}}' bindtap='flashCode' class='erweima-code-subtitle color-green' style='font-size:28rpx;'>
+    <i-icon hidden='{{errorMsg}}' type="refresh" size="16" color="#19be6b"></i-icon>手动刷新</view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+</view>
+<i-toast id="toast" />

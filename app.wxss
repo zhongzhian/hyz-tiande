@@ -1,0 +1,431 @@
+/**app.wxss**/
+
+/* 常规 start */
+
+.formid-form {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.formid-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: none !important;
+  text-align: center;
+  padding: 20rpx;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.container {
+  height: 100%;
+  align-items: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: #f8f8f9;
+}
+
+page {
+  background-color: #f8f8f9;
+}
+
+.app-foot {
+  text-align: center;
+}
+
+.normal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  /* background-color: #464854; */
+  overflow-y: auto;
+}
+
+.mg20 {
+  margin: 20rpx;
+}
+
+.mt200 {
+  margin-top: 200rpx;
+}
+
+.mt100 {
+  margin-top: 100rpx;
+}
+
+.mt50 {
+  margin-top: 50rpx;
+}
+
+.mt20 {
+  margin-top: 20rpx;
+}
+
+.wd40cen {
+  width: 40%;
+}
+
+.wd100cen {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+  /* width: 100%; */
+}
+
+.color-red {
+  color: #ed3f14 !important;
+}
+
+.color-yellow {
+  color: #f90 !important;
+}
+
+.color-green {
+  color: #19be6b !important;
+}
+
+.color-title {
+  color: #1c2438 !important;
+}
+
+.color-content {
+  color: #495060 !important;
+}
+
+.color-subcontent {
+  color: #80848f !important;
+}
+
+.color-disabled {
+  color: #bbbec4 !important;
+}
+
+.color-border {
+  /* color:#dddee1; */
+  border: solid 1px #dddee1;
+}
+
+.color-divider {
+  color: #e9eaec;
+}
+
+.color-bg {
+  background-color: #f8f8f9;
+}
+
+.color-bgwhite {
+  background-color: #fff;
+}
+
+.normal-title {
+  padding: 10rpx 30rpx;
+  text-align: left;
+  font-size: 30rpx;
+}
+
+.moretext {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.moretext2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.normal-modalline{
+  padding:5rpx 20rpx;
+}
+/* 常规 end */
+
+/* 卡状panel start */
+
+.normal-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.normal-panel {
+  position: fixed;
+  top: 50rpx;
+  left: 50rpx;
+  right: 50rpx;
+  z-index: 5;
+  background-color: #fff;
+  border: solid 1px #f8f8f9;
+  border-radius: 20rpx;
+}
+
+.normal-panel-title {
+  font-size: 40rpx;
+  text-align: center;
+  padding: 40rpx;
+  color: #1c2438;
+  border-bottom: 1px solid #f5f7f9;
+}
+
+.normal-panel-content {
+  padding: 30rpx;
+  font-size: 28rpx;
+  text-align: center;
+  color: #495060;
+  border-bottom: 1px solid #f5f7f9;
+}
+
+.normal-panel-desc {
+  /* padding: 40rpx 0 0 0;
+  font-size: 24rpx;
+  text-align: center; */
+  padding: 40rpx 30rpx 0 30rpx;
+  font-size: 24rpx;
+  /* text-align: center; */
+  color: #495060;
+  /* border-bottom: 1px solid #f5f7f9; */
+}
+
+.normal-panel-btnform {
+  text-align: center;
+  padding: 40rpx;
+}
+
+/* 卡状panel end */
+
+.normal-btn {
+  text-align: center;
+  font-size: 60rpx;
+  display: inline-block;
+}
+
+.erweima-view {
+  position: fixed;
+  right: 100rpx;
+  bottom: 50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border: 1px solid #2db7f5;
+  border-radius: 50%;
+  background-color: #2db7f5;
+  text-align: center;
+  padding: 20rpx;
+}
+
+.erweima-png {
+  width: 100%;
+  height: 100%;
+}
+
+/* 会员页 上部 start */
+
+.userinfo-view {
+  width: 100%;
+  padding: 20rpx 0rpx;
+  height: 250rpx;
+  position: relative;
+  background: linear-gradient(to bottom, #464854, #2f323b);
+}
+
+.userinfo-card {
+  /* border-top: 1px solid #fff; */
+  border-top-right-radius: 30rpx;
+  border-top-left-radius: 30rpx;
+  background-color: #fff;
+  background: linear-gradient(to right, #ecd8da, #eccccf);
+  /* background: url("../../image/cardbg.jpeg"); */
+  position: absolute;
+  height: 250rpx;
+  bottom: 0;
+  left: 50rpx;
+  right: 50rpx;
+}
+
+.userinfo-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  text-align: right;
+  padding: 20rpx;
+}
+
+.userinfo-right {
+  position: absolute;
+  left: 20%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  text-align: left;
+  padding: 20rpx;
+}
+
+.userinfo-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 50rpx;
+  right: 0;
+  height: 40rpx;
+  text-align: left;
+  padding: 0 40rpx;
+  font-size: 30rpx;
+}
+
+.userinfo-image {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-title {
+  font-size: 35rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 40rpx;
+}
+
+.userinfo-subtitle {
+  font-size: 30rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 90rpx;
+  /* color: #aaa; */
+}
+
+.userinfo-cardimage {
+  position: absolute;
+  right: 30rpx;
+  bottom: 0;
+  height: 270rpx;
+  width: 300rpx;
+}
+
+.usermenu-view {
+  height: 140rpx;
+  background-color: #464854;
+  width: 100%;
+}
+
+/* list */
+
+.normallist-topbar {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; */
+  height: 30px;
+  width: 100%;
+  padding: 10rpx 20rpx;
+}
+
+.normallist-topbar-text {
+  padding: 10rpx 40rpx;
+  text-align: left;
+  font-size: 32rpx;
+  color: #80848f;
+}
+
+.normallist-topbar-add {
+  position: absolute;
+  right: 50rpx;
+  top: 12rpx;
+  height: 48rpx;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  background: #19be6b;
+  color: #fff;
+  border-radius: 10rpx;
+  padding: 4rpx 10rpx;
+}
+
+.normallist-topbar-delete {
+  position: absolute;
+  right: 50rpx;
+  top: 12rpx;
+  height: 48rpx;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  background: #ed3f14;
+  color: #fff;
+  border-radius: 10rpx;
+  padding: 4rpx 10rpx;
+}
+
+.normallist-list {
+  /* position: absolute;
+  top: 80rpx;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+
+  top:10rpx;
+  position: relative;
+  width: 100%;
+}
+
+.normallist-list-item {
+  padding: 20rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+  color: #80848f;
+  margin-bottom: 10rpx;
+}
+
+.normallist-list-item-content {
+  padding: 20rpx;
+  position: relative;
+}
+
+.normallist-list-item-text {
+  font-size: 36rpx;
+  color: #495060;
+  margin-right: 20rpx;
+}
+
+.normallist-list-item-desc {
+  float: right;
+}
+
+.normallist-list-item-detail {
+  padding: 20rpx;
+}
+
+.normallist-list-item-detail-desc {
+  padding: 10rpx;
+}
+
+.normallist-list-item-toolbar {
+  padding: 20rpx 20rpx 0rpx;
+  border-top: 2rpx solid #dddee1;
+  height: 40rpx;
+}
+
+.normallist-list-item-toolbar-action {
+  display: inline-block;
+}
+
+.floatright {
+  float: right;
+}

@@ -1,0 +1,76 @@
+<!--pages/payment/list/list.wxml-->
+<view class="container">
+  <!-- <view class="normallist-topbar">
+    <view class="normallist-topbar-text">
+      注:每个用户最多只能绑定三辆车
+    </view>
+    <view hidden='{{historys.length > 2}}' bindtap='addTap' class="normallist-topbar-add">
+      <i-icon size="20" type="add"></i-icon>
+      <text>添加</text>
+    </view>
+  </view> -->
+  <view class="normallist-list">
+    <!-- <view> -->
+    <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" class="normallist-list-item" style='padding:20rpx 0;'>
+      <view class="normallist-list-item-content" style='padding:17px 0;'>
+        <i-checkbox checked="{{item.selected}}" bindchange="changeCheck" i-class="payment-list-item-content-checkbox" data-item="{{item}}" data-bindex="{{bindex}}">
+        </i-checkbox>
+        <!-- <checkbox checked="{{item.selected}}" bindchange="changeCheck" class="payment-list-item-content-checkbox" data-item="{{item}}" data-bindex="{{bindex}}">
+        </checkbox> -->
+        <view class="payment-list-item-content">
+          <view class="payment-list-item-content-title color-content moretext">{{item.financialObjectType}}</view>
+          <view class="payment-list-item-content-desc color-subcontent">
+            <i-icon size="20" color="#80848f" type="label"></i-icon>
+            <text>{{item.detailSubjects}}</text>
+          </view>
+          <view class="payment-list-item-content-price">
+            <text class="color-yellow" style='font-size:35px;line-height:35px;'>{{item.money}}</text>元</view>
+        </view>
+      </view>
+      <view class="normallist-list-item-toolbar">
+        <view data-item="{{item}}" data-bindex="{{bindex}}" style='margin-right:30px;' class="normallist-list-item-toolbar-action">
+          <!-- <i-icon size="20" color="#80848f" type="time_fill"></i-icon> -->
+          <van-icon custom-style="line-height:50rpx;vertical-align:top;" size="20px" color="#ff9900" name="bill-o" />
+          <text style="line-height:50rpx;">{{item.statusStr}}</text>
+        </view>
+        <!-- <view bindtap="editTap" data-item="{{item}}" data-bindex="{{bindex}}" style='margin-right:30px;' class="normallist-list-item-toolbar-action">
+          <i-icon size="20" color="#19be6b" type="editor"></i-icon>
+          <text>修改</text>
+        </view>
+        <view bindtap="actionsTap" data-item="{{item}}" data-bindex="{{bindex}}" class="normallist-list-item-toolbar-action floatright">
+          <i-icon size="20" color="#ed3f14" type="trash"></i-icon>
+          <text>删除</text>
+        </view> -->
+      </view>
+    </view>
+    <!-- </view> -->
+    <i-load-more wx:if="{{historys.length === 0}}" tip="暂时没有缴费项" loading="{{ false }}" />
+    <view style='height:200rpx;'></view>
+  </view>
+  <view class="payment-list-bottom">
+    <view class="payment-list-bottom-total">
+      <text class='color-yellow'>{{orderNum}}</text>个订单，共
+      <text class='color-yellow'>¥{{totalPrice}}</text>元
+    </view>
+    <view class="payment-list-bottom-toolbar">
+      <i-checkbox i-class="payment-list-bottom-toolbar-checkbox" value="全选" checked="{{isAll}}" bindchange="allcheckChange">
+      </i-checkbox>
+      <!-- <checkbox class="payment-list-bottom-toolbar-checkbox" value="全选" checked="{{isAll}}" bindchange="allcheckChange">
+      </checkbox> -->
+      <view bindtap="goToPay" class="payment-list-bottom-toolbar-btn {{orderNum>0?'':'disabledColor'}}">
+        下一步
+      </view>
+    </view>
+  </view>
+  <i-action-sheet visible="{{ visible2 }}" actions="{{ actions2 }}" show-cancel bind:cancel="handleCancel2" bind:click="handleClickItem2" mask-closable="{{ false }}">
+    <view hidden='{{isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>删除后无法恢复哦</text>
+    </view>
+    <view hidden='{{!isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>清除后后无法恢复哦</text>
+    </view>
+  </i-action-sheet>
+</view>
+<i-toast id="toast" />

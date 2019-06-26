@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index"
+  },
+  "navigationBarTitleText": "车位引导",
+  "navigationBarBackgroundColor": "#3166b4",
+  "navigationBarTextStyle": "white"
+}

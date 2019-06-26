@@ -1,0 +1,53 @@
+/* pages/carpark/car/car.wxss */
+
+/* 无牌照关联车 */
+
+.carpark-search-nonumcard {
+  /* position: absolute;
+  top: 50rpx;
+  left: 50rpx;
+  right:50rpx; *//* padding:50rpx; */
+  width: 100%;
+}
+
+.carpark-search-nonumcard-panel {
+  position: relative;
+  background-color: #fff;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.carpark-search-nonumcard-content {
+  padding: 30rpx;
+}
+
+.carpark-search-nonumcard-title {
+  font-size: 60rpx;
+  padding: 20rpx;
+}
+
+.carpark-search-nonumcard-left, .carpark-search-nonumcard-right {
+  width: 49%;
+  /* height: 50rpx; */
+  float: left;
+}
+
+.carpark-search-nonumcard-toolbar {
+  border-top: 2rpx solid #dddee1;
+  padding: 20rpx;
+}
+
+.sharebtn {
+  padding: 0;
+  border: none !important;
+  background: none;
+  margin: 0;
+  display: inline-block;
+  line-height: 50rpx;
+}
+
+button[class="sharebtn"]::after {
+  border: 0;
+}
+

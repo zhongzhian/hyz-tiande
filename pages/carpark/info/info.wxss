@@ -1,0 +1,102 @@
+/* pages/info/info.wxss */
+
+.i-steps-demo {
+  margin: 40rpx;
+}
+
+.info-view {
+  padding: 20rpx;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  text-align: center;
+  /* border-top: solid 1px #f8f8f9; */
+  background-color: #fff;
+}
+
+.info-carnum {
+  position: relative;
+  color: #495060;
+  font-size: 44rpx;
+  text-align: center;
+  display: inline-block;
+  width: 33%;
+}
+
+.info-carnum50 {
+  position: relative;
+  color: #495060;
+  font-size: 36rpx;
+  text-align: center;
+  display: inline-block;
+  width: 50%;
+}
+
+.info-desc {
+  position: absolute;
+  width: 100%;
+  bottom: -40rpx;
+  left: 0;
+  right: 0;
+  font-size: 24rpx;
+  color: #495060;
+  font-weight: 200;
+}
+
+.info-detail {
+  /* background-color: #fff; */
+  padding: 20rpx 40rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #80848f;
+}
+
+.info-detail-item1 {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+}
+
+.info-detail-label {
+  display: inline-block;
+  width: 160rpx;
+  text-align: right;
+}
+
+.info-detail-text {
+  text-align: left;
+  color: #495060;
+}
+
+.step-view {
+  padding: 0rpx 20rpx;
+  height: 600rpx;
+  text-align: center;
+}
+
+.step-scan-icon {
+  margin-top: 60rpx;
+}
+
+.formbtn {
+  padding: 20rpx 50rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.step-btn {
+  text-align: center;
+  font-size: 60rpx;
+}
+
+.step-btn2 {
+  text-align: center;
+  font-size: 60rpx;
+  display: inline-block;
+  width: 40%;
+}

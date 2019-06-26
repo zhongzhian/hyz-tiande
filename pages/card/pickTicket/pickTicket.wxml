@@ -1,0 +1,82 @@
+<!--pages/card/pickTicket/pickTicket.wxml-->
+<i-tabs i-class="numtime-tab" current="{{ current }}" bindchange="switchCheckWay">
+  <i-tab key="canuse" title="可用优惠券"></i-tab>
+  <!-- <i-tab key="num2" title="模糊查找"></i-tab> -->
+  <i-tab key="cannotuse" title="不可用优惠券"></i-tab>
+</i-tabs>
+
+<!-- 按车牌号 -->
+<view hidden="{{current !== 'canuse'}}" class="container">
+  <view class="normallist-list" style='top:100rpx;bottom:150rpx;overflow-y:auto;'>
+    <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" bindtap="btnTap" data-item="{{item}}" data-bindex="{{bindex}}" class="card-list-item">
+      <!-- <view class="card-list-item-bottom"></view>
+      <view class="card-list-item-top"></view> -->
+
+      <i-checkbox checked="{{item.selected}}" bindchange="changeCheck" i-class="card-list-item-content-checkbox" data-item="{{item}}" data-bindex="{{bindex}}">
+      </i-checkbox>
+      <view class="card-list-item-content">
+        <view class="card-list-item-content-left">
+          <view class="card-list-item-content-topquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-bottomquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-topquat"></view>
+          <view class="card-list-item-content-bottomquat"></view>
+          <view class="card-list-item-content-duration">{{item.duration}}</view>
+        </view>
+        <view class="card-list-item-content-right">
+          <view class="card-list-item-content-topquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-bottomquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-topquat"></view>
+          <view class="card-list-item-content-bottomquat"></view>
+          <view class="card-list-item-content-type color-subcontent" style='top: 40rpx;'>有效期：{{item.dueTime || '永久'}}</view>
+          <view wx:if="{{item.type==='1'}}" class="card-list-item-content-type color-subcontent">抵扣时长·小时：{{item.duration}}</view>
+          <view wx:if="{{item.type==='2'}}" class="card-list-item-content-type color-subcontent">全免停车费用</view>
+        </view>
+      </view>
+    </view>
+    <i-load-more wx:if="{{historys.length === 0}}" tip="暂无可用票券" loading="{{ false }}" />
+    <i-load-more wx:if="{{isNoMore && (historys.length > 0)}}" tip="暂无更多可用票券" loading="{{ false }}" />
+    <i-load-more wx:if="{{loadmoreLoading}}" tip="正在加载" loading="{{ loadmoreLoading }}" />
+  </view>
+  <view class="ticket-list-bottom">
+    <i-button i-class="step-btn" bind:click="bindsumit" type="primary" shape="circle" size="small">
+      确 定
+    </i-button>
+  </view>
+</view>
+
+<!-- 模糊查找 -->
+<view hidden="{{current !== 'cannotuse'}}" class="container" style='position:relative;'>
+  <view class="normallist-list" style='top:20rpx;'>
+    <view wx:for="{{notlist}}" wx:key="item" wx:for-index="bindex" data-item="{{item}}" data-bindex="{{bindex}}" class="card-list-item">
+      <view class="card-list-item-content" style='left:30rpx;'>
+        <view class="card-list-item-content-left" style='background:#bbbec4;'>
+          <view class="card-list-item-content-topquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-bottomquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-topquat"></view>
+          <view class="card-list-item-content-bottomquat"></view>
+          <view class="card-list-item-content-duration">{{item.duration}}</view>
+        </view>
+        <view class="card-list-item-content-right">
+          <view class="card-list-item-content-topquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-bottomquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-topquat"></view>
+          <view class="card-list-item-content-bottomquat"></view>
+          <view class="card-list-item-content-type color-subcontent" style='top: 30rpx;'>有效期：{{item.dueTime || '永久'}}</view>
+          <view wx:if="{{item.type==='1'}}" class="card-list-item-content-type color-subcontent" style='top: 80rpx;'>抵扣时长·小时：{{item.duration}}</view>
+          <view wx:if="{{item.type==='2'}}" class="card-list-item-content-type color-subcontent" style='top: 80rpx;'>全免停车费用</view>
+          <view class="card-list-item-content-type color-subcontent disabled-card" style='top: 130rpx;'>{{item.statusName}}</view>
+        </view>
+      </view>
+    </view>
+    <i-load-more wx:if="{{notlist.length === 0}}" tip="暂无不可用票券" loading="{{ false }}" />
+    <i-load-more wx:if="{{isNoMore_not && (notlist.length > 0)}}" tip="暂无更多不可用票券" loading="{{ false }}" />
+    <i-load-more wx:if="{{loadmoreLoading_not}}" tip="正在加载" loading="{{ loadmoreLoading_not }}" />
+  </view>
+</view>
+
+<!-- <view class="formbtn">
+  <i-button i-class="step-btn" bind:click="findCar" type="primary" shape="circle" size="small">
+    查 找
+  </i-button>
+</view> -->
+<i-toast id="toast" />

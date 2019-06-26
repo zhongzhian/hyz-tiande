@@ -1,0 +1,26 @@
+/* pages/home/visitor/invitation.wxss */
+
+.invitation-rowtitle {
+  padding-top: 20rpx;
+}
+
+.invitation-row {
+  padding: 0 20rpx;
+}
+
+.erweima-canvas {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+}
+
+.erweima-errorMsg {
+  padding: 20rpx;
+  position: absolute;
+  top: 50%;
+  left: 20rpx;
+  right: 20rpx;
+  text-align: center;
+  font-size: 30rpx;
+}

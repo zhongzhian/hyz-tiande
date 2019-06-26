@@ -1,0 +1,58 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="normal-container" style='background-color:#fff;'>
+  <!-- <view class="welcome-helloword">欢迎来到天德广场</view> -->
+  <swiper class="welcome-swiper" circular="true" indicator-dots="{{swipeDot}}" interval="10000" current="{{swiperCurrent}}" bindchange="swiperChange">
+    <block wx:for="{{swipeDatas}}" wx:for-index="key" wx:for-item="value">
+      <swiper-item>
+        <view class="welcome-swiper-item">
+          <image id="{{key}}" style="width: {{value.imageWidth}}px; height: {{value.imageHeight}}px;" class="welcome-swiper-item-image" bindtap="imageTap" bindload="imageLoad" src="{{value.imageUrl}}" mode="cover">
+          </image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- <view class="welcome-swipertitle color-content">{{swipertitle}}</view> -->
+
+  <view class="welcome-bottom-btnform">
+    <form class="formid-form" bindsubmit="formSubmit" report-submit>
+      <view class="welcome-bottom-btnform-form">
+        <view class="welcome-bottom-btnform-btn">
+          <button plain class="formid-btn" style='padding:0;' form-type="submit" data-type="doScan">
+            <!-- <image bindtap="doScan" class="erweima-png" src="../../image/scan.png" mode="cover"></image> -->
+            <image class="erweima-png" src="../../image/saoma.png" mode="cover"></image>
+          </button>
+        </view>
+        <!-- 测试用 -->
+        <!-- <view class="welcome-bottom-btnform-btn" style='margin-left:60px;'>
+          <button plain class="formid-btn" style='padding:0;' form-type="submit" data-type="goPayfee">
+            <image class="erweima-png" src="../../image/xunchejiaofei.png" mode="cover"></image>
+          </button>
+        </view> -->
+        <view wx:if='{{isHuiyuan || isVisitor}}' class="welcome-bottom-btnform-btn" style='margin-left:60px;'>
+          <button plain class="formid-btn" style='padding:0;' form-type="submit" data-type="goErweima">
+            <!-- <image bindtap="goErweima" class="erweima-png" src="../../image/erweima.png" mode="cover"></image> -->
+            <image class="erweima-png" src="../../image/menjinerweima.png" mode="cover"></image>
+          </button>
+        </view>
+        <view wx:if='{{isVisitor}}' class="welcome-bottom-btnform-btn" style='margin-left:60px;'>
+          <button plain class="formid-btn" style='padding:0;' form-type="submit" data-type="goVisitor">
+            <image class="erweima-png" src="../../image/yaoqingfangke.png" mode="cover"></image>
+          </button>
+        </view>
+      </view>
+    </form>
+  </view>
+  <!-- <view hidden='{{!isHuiyuan}}' class="erweima-view" style='right:none;left:100rpx;'>
+    <image bindtap="doScan" class="erweima-png" src="../../image/scan.png" mode="cover"></image>
+  </view>
+  <view hidden='{{!isHuiyuan}}' class="erweima-view">
+    <image bindtap="goErweima" class="erweima-png" src="../../image/erweima.png" mode="cover"></image>
+  </view> -->
+</view>
+<i-modal title="会员领卡" visible="{{ showModal }}" bind:ok="okModal" bind:cancel="cancelModal">
+  <!-- <view>恭喜您成为新会员</view> -->
+  <view>您必须完成领卡</view>
+  <view>才能使用会员功能</view>
+</i-modal>
+<i-toast id="toast" />

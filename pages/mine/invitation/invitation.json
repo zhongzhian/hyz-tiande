@@ -1,0 +1,10 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "我的邀请函",
+  "usingComponents": {
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index",
+    "i-action-sheet": "../../../dist/action-sheet/index",
+    "i-load-more": "../../../dist/load-more/index"
+  }
+}

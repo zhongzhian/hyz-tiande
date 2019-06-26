@@ -1,0 +1,98 @@
+<!--pages/card/apply.wxml-->
+<import src="../../../common/foot.wxml" />
+<view class="normal-container">
+  <view>
+    <!-- wx:if="{{!isAgain}}" -->
+    <form wx:if="{{cardStatus === 0}}" bindsubmit="formSubmit" report-submit>
+      <view class="normal-panel">
+        <view class="normal-panel-title">
+          会员申请
+        </view>
+        <i-panel>
+          <picker range="{{companyNames}}" value="{{selectCompany.organizationName}}" bindchange="bindCompanyChange">
+            <i-input value="{{ selectCompany.organizationName }}" title="所属单位" disabled placeholder="请选择所属单位" />
+          </picker>
+          <picker range="{{deptNames}}" value="{{selectDept.organizationName}}" bindchange="bindDeptChange">
+            <i-input value="{{ selectDept.organizationName }}" title="所属部门" disabled placeholder="请选择所属部门" />
+          </picker>
+          <i-input name="userName" maxlength='32' value="{{ myApplys.userName }}" type="text" title="姓名" placeholder="请输入姓名" />
+          <i-input name="idcard" maxlength='18' value="{{ myApplys.idNumber }}" type="idcard" title="身份证号" placeholder="请输入身份证号" />
+          <i-input name="phone" maxlength='11' value="{{ myApplys.telphone }}" type="number" title="电话" placeholder="请输入手机号" />
+        </i-panel>
+        <view class="normal-panel-desc">
+          提交申请后，请耐心等待审核。我们会在7天内通过微信的服务通知到您。谢谢
+        </view>
+        <view class="normal-panel-btnform">
+          <button formType="submit" type="primary" bindtap="confirmInvite">
+            提交申请
+          </button>
+        </view>
+        <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+      </view>
+      <!-- <view class="mt20 text-center">
+        <picker range="{{companyNames}}" value="{{selectCompany.organizationName}}" bindchange="bindCompanyChange">
+          <i-input value="{{ selectCompany.organizationName }}" title="所属单位" disabled placeholder="请选择所属单位" />
+        </picker>
+        <picker range="{{deptNames}}" value="{{selectDept.organizationName}}" bindchange="bindDeptChange">
+          <i-input value="{{ selectDept.organizationName }}" title="所属部门" disabled placeholder="请选择所属部门" />
+        </picker>
+        <i-input name="userName" value="{{ myApplys.userName }}" type="text" title="姓名" placeholder="请输入姓名" />
+        <i-input name="idcard" value="{{ myApplys.idNumber }}" type="idcard" title="身份证号" placeholder="请输入身份证号" />
+        <i-input name="phone" value="{{ myApplys.telphone }}" type="number" title="电话" placeholder="请输入手机号" />
+      </view>
+      <view class="mt20 text-center">
+        <button type="primary" shape="circle" size="small" formType="submit">发起申请</button>
+      </view> -->
+    </form>
+    <!-- wx:if="{{isAgain}}" -->
+    <form wx:if="{{cardStatus === 2}}" bindsubmit="againSubmit" report-submit>
+      <view class="normal-panel">
+        <view class="normal-panel-title">
+          会员申请
+        </view>
+        <i-panel>
+          <i-input value="{{ applyComName }}" title="所属单位" disabled placeholder="请选择所属单位" />
+          <i-input value="{{ myApplys.organizationName }}" title="所属部门" disabled placeholder="请选择所属部门" />
+          <i-input value="{{ myApplys.userName }}" type="text" title="姓名" placeholder="请输入姓名" />
+          <i-input value="{{ myApplys.idNumber }}" type="idcard" title="身份证号" placeholder="请输入身份证号" />
+          <i-input value="{{ myApplys.telphone }}" type="number" title="电话" placeholder="请输入手机号" />
+        </i-panel>
+        <view class="normal-panel-desc">
+          您的申请已经提交，但是还没获得审核，您可以再次提交申请以提醒审批者完成审批。
+        </view>
+        <view class="normal-panel-btnform">
+          <button formType="submit" type="primary" bindtap="confirmInvite">
+            再次提交申请
+          </button>
+        </view>
+        <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+      </view>
+    </form>
+    <form wx:if="{{cardStatus === 1}}" bindsubmit="backToHome" report-submit>
+      <view class="normal-panel">
+        <view class="normal-panel-title">
+          会员
+        </view>
+        <view class="normal-panel-desc">
+          您已经完成领卡，成为正式会员了
+        </view>
+        <view class="normal-panel-btnform">
+          <button formType="submit" type="primary" bindtap="confirmInvite">
+            返回首页
+          </button>
+        </view>
+        <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+      </view>
+    </form>
+  </view>
+</view>
+
+<i-modal title="提交成功" visible="{{ showTips }}" actions="{{ tipActions }}" bind:click="tipClick">
+  <view>您已成功提交开卡申请</view>
+  <view>申请人：{{myApplys.userName}}</view>
+  <view>手机号：{{myApplys.telphone}}</view>
+  <view>身份证号：{{myApplys.idNumber}}</view>
+  <view>所属单位：{{selectCompany.organizationName}}</view>
+  <view>所属部门：{{myApplys.organizationName}}</view>
+</i-modal>
+<i-toast id="toast" />

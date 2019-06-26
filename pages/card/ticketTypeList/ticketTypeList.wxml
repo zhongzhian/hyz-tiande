@@ -1,0 +1,72 @@
+<!--pages/card/ticketTypeList/ticketTypeList.wxml-->
+
+<view class="container">
+  <view class="normallist-list" style='top:20rpx;'>
+    <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" bindtap="btnTap" data-item="{{item}}" data-bindex="{{bindex}}" class="card-list-item">
+      <!-- <view class="card-list-item-bottom"></view>
+      <view class="card-list-item-top"></view> -->
+      <view class="card-list-item-content">
+        <view class="card-list-item-content-left">
+          <view class="card-list-item-content-topquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-bottomquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-topquat"></view>
+          <view class="card-list-item-content-bottomquat"></view>
+          <view class="card-list-item-content-duration">{{item.duration}}</view>
+          <!-- <view wx:if="{{item.type==='1'}}" class="card-list-item-content-duration">{{item.duration || '全'}}</view>
+          <view wx:if="{{item.type==='2'}}" class="card-list-item-content-duration">{{item.duration || '全'}}</view> -->
+        </view>
+        <view class="card-list-item-content-right">
+          <view class="card-list-item-content-topquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-bottomquat" style='left:-15rpx;'></view>
+          <view class="card-list-item-content-topquat"></view>
+          <view class="card-list-item-content-bottomquat"></view>
+
+          <view class="card-list-item-content-type color-content" style='top: 20rpx;font-size:35rpx;'>{{item.couponName || '--'}}</view>
+          <view class="card-list-item-content-type color-subcontent" style='top: 80rpx;'>有效期限·天：{{item.validPeriod || '永久'}}</view>
+          <view wx:if="{{item.type==='1'}}" class="card-list-item-content-type color-subcontent" style='top: 130rpx;'>抵扣时长·小时：{{item.duration}}</view>
+          <view wx:if="{{item.type==='2'}}" class="card-list-item-content-type color-subcontent" style='top: 130rpx;'>全免停车费用</view>
+
+          <!-- <view class="card-list-item-content-type" style='top: 40rpx;'>有效期限·天：{{item.validPeriod || '永久'}}</view>
+          <view wx:if="{{item.type==='1'}}" class="card-list-item-content-type">抵扣时长·小时：{{item.duration}}</view>
+          <view wx:if="{{item.type==='2'}}" class="card-list-item-content-type">全免停车费用</view> -->
+        </view>
+
+        <!-- <text class='normallist-list-item-text'>{{item.couponName}}</text>
+        <view class="normallist-list-item-detail">
+          <view class='normallist-list-item-detail-desc'>抵扣时长(小时)：<text class="color-yellow">{{item.duration}}</text></view>
+          <view class='normallist-list-item-detail-desc'>有效期限(天)：{{item.validPeriod || '永久'}}</view>
+        </view> -->
+      </view>
+    </view>
+    <!-- <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" bindtap="btnTap" data-item="{{item}}" data-bindex="{{bindex}}" class="card-list-item">
+      <view class="coupon-item">
+        <view class="style-one">
+          <view class="info-box">
+            <view class="coupon-item-duration">{{item.duration || '全'}}</view>
+            <view class="coupon-item-type">小时抵扣时长</view>
+            <view class="coupon-item-type">免停车费用</view>
+            <view class="coupon-item-validPeriod">有效期限(天)：{{item.validPeriod || '永久'}}</view>
+          </view>
+          <view href="javascript:;" class="get-btn">
+            发放
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+    <i-load-more wx:if="{{historys.length === 0}}" tip="暂无优惠券" loading="{{ false }}" />
+    <i-load-more wx:if="{{isNoMore && (historys.length > 0)}}" tip="暂无更多优惠券" loading="{{ false }}" />
+    <i-load-more wx:if="{{loadmoreLoading}}" tip="正在加载" loading="{{ loadmoreLoading }}" />
+  </view>
+  <i-action-sheet visible="{{ visible2 }}" actions="{{ actions2 }}" show-cancel bind:cancel="handleCancel2" bind:click="handleClickItem2" mask-closable="{{ false }}">
+    <view hidden='{{isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>删除后无法恢复哦</text>
+    </view>
+    <view hidden='{{!isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>清除后后无法恢复哦</text>
+    </view>
+  </i-action-sheet>
+</view>
+<i-toast id="toast" />

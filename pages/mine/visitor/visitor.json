@@ -1,0 +1,11 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "我的访客",
+  "usingComponents": {
+    "van-search": "../../../miniprogram_npm/vant-weapp/search/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index",
+    "i-action-sheet": "../../../dist/action-sheet/index",
+    "i-load-more": "../../../dist/load-more/index"
+  }
+}

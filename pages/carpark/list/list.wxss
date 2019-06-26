@@ -1,0 +1,78 @@
+/* pages/list/list.wxss */
+
+.car-list-view {
+  padding: 0rpx;
+}
+
+.car-list-title {
+  background-color: #fff;
+  font-size: 32rpx;
+  padding: 10rpx 20rpx;
+  color: #80848f;
+  margin-top: 4rpx;
+}
+
+.car-list-item {
+  margin: 10rpx 20rpx;
+  border: 2rpx solid #dddee1;
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+
+.car-list-item-desc {
+  border-bottom: 2rpx solid #dddee1;
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+  color: #80848f;
+}
+
+.car-list-item-body {
+  padding-top: 10rpx;
+}
+
+/* .car-list-item-icon{
+
+} */
+
+
+
+.container {
+  display: block;
+}
+
+.result-searchcard {
+  background: #fff;
+  border: solid 1px #dddee1;
+  border-radius: 10rpx;
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.result-searchcard-imgcontent {
+  background: #dddee1;
+}
+
+.result-searchcard-imgcontent-img {
+  width: 100%;
+}
+
+.result-searchcard-content {
+  padding: 20rpx;
+}
+
+.result-searchcard-content-text {
+  padding-left: 10rpx;
+  padding-bottom: 10rpx;
+  font-size: 40rpx;
+}
+
+.result-searchcard-content-textdesc {
+  font-size: 25rpx;
+  padding-left: 20rpx;
+}
+
+.result-searchcard-content-textlabel {
+  width: 100rpx;
+  text-align: right;
+  display: inline-block;
+}

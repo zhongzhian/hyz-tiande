@@ -1,0 +1,27 @@
+/* pages/notice/emit/emit.wxss */
+
+.notice-form-label {
+  padding: 15px 15px 0;
+  font-size: 14px;
+  color: #495060;
+}
+
+.notice-form-content {
+  padding: 15px;
+  font-size: 14px;
+  color: #495060;
+  position: relative;
+}
+
+.notice-form-textarea {
+  background-color: #f8f8f9;
+  /* width: 100%; */
+  padding: 10rpx;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  width: auto;
+  height: auto;
+}

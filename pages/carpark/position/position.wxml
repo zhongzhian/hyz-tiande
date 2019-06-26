@@ -1,0 +1,88 @@
+<!--pages/position/position.wxml-->
+
+<view class="position-container">
+  <!-- <view class="page-head">
+    <view class="page-head-result">{{carResult}}</view>
+    <view class="page-head-line"></view>
+    <view class="page-head-desc">{{myloc}}</view>
+  </view> -->
+  <view class="position-region">
+    <view>
+      <view style="background-color: #ed3f14" class="position-region-point">
+      </view>
+      <text class="position-region-text">车辆位置</text>
+    </view>
+    <view>
+      <view style="background-color: #09ff00;" class="position-region-point">
+      </view>
+      <text class="position-region-text">扫码位置</text>
+    </view>
+    <view>
+      <view style="background-color: hsl(54, 100%, 50%);" class="position-region-point">
+      </view>
+      <text class="position-region-text">途经点</text>
+    </view>
+  </view>
+  <view class="result-body">
+    <!-- <image class="image" src="../../image/bg.svg" lazy-load="true" mode="center" style="width: 100%; height: 100%;" /> -->
+    <movable-area>
+      <movable-view x="{{x}}" y="{{y}}" out-of-bounds="true" bindchange="onChange" bindscale="onScale" scale scale-min="0.1" scale-max="1" scale-value="{{scale}}" direction="all">
+        <view style="left:{{carLeft+ 'px'}};top:{{carTop+ 'px'}};" class="pointdefault carposition" animation="{{textLeftAnimation}}"></view>
+        <view style="left:{{carLeft+ 'px'}};top:{{carTop+ 'px'}};" class="pointdefault carposition"></view>
+
+        <view hidden="{{hidPerson}}" style="left:{{personLeft+ 'px'}};top:{{personTop+ 'px'}};" class="pointdefault personposition" animation="{{textLeftAnimation}}"></view>
+        <view hidden="{{hidPerson}}" style="left:{{personLeft+ 'px'}};top:{{personTop+ 'px'}};" class="pointdefault personposition"></view>
+
+        <view wx:for="{{pointList}}" wx:key="item" wx:for-index="bindex" class="pointdefault pointposition" data-item="{{item}}" style="left:{{item.x+'px'}};top:{{item.y+'px'}};">
+        </view>
+        <!-- <view wx:for="{{pointList}}" wx:key="item" wx:for-index="bindex" class="pointdefault pointposition" data-item="{{item}}" style="left:{{item.x+'px'}};top:{{item.y+'px'}};" animation="{{textLeftAnimation}}">
+        </view> -->
+
+        <!-- <view wx:for=" {{dotList}} " wx:key="item " wx:for-index="bindex " class="dotposition" data-item="{{item}} " 
+        style="left:{{item.x+ 'px'}};top:{{item.y+ 'px'}}; "></view> -->
+
+        <view wx:for="{{lineList}}" wx:for-item="item" class="lineStyle" wx:for-index="bindex" style="width:{{item.width+ 'px'}};left:{{item.x+ 'px'}};top:{{item.y+ 'px'}};transform: translate({{item.tx+ 'px'}}, {{item.ty+ 'px'}})  rotate({{item.rad+ 'rad'}});">
+<view class="lineStyle-jiantou" style='left:{{jiantouleft}}%'>
+  <i-icon i-class='lineStyle-jiantou-icon' type="play_fill" size="20" color="#09ff00"></i-icon>
+</view>
+        </view>
+
+        <!-- <view class="lineStyle" style="width: 72.80109889280519px;left:780px;top:730px;transform: translate(-25px, 35px) rotate(-1.849095985800008rad);"></view> -->
+
+        <image class="image " src="{{svgUrl}} " lazy-load="true " mode="center " style="width: 100%; height: 100%; " />
+      </movable-view>
+    </movable-area>
+  </view>
+  <view class="info-view ">
+    <view class="info-carnum ">{{info.parkingLot.name || '--'}}
+      <text class="info-desc ">停车场</text>
+    </view>
+    <view class="info-carnum ">{{info.parkingArea.name || '--'}}
+      <text class="info-desc ">区域</text>
+    </view>
+    <view class="info-carnum ">{{info.licensePlateNumber || '--'}}
+      <text class="info-desc ">车牌号</text>
+    </view>
+  </view>
+
+  <view class="formbtn ">
+    <!-- <i-icon bindtap='reFind' type="refresh " size="40 " color="#2d8cf0 "></i-icon> -->
+    <view class='formbtn-btn' style="margin-right:60px; ">
+      <i-icon i-class='position-icon' bindtap='doScan' type="scan " size="30 " color="#80848f "></i-icon>
+      <view class="position-text ">扫码</view>
+    </view>
+    <!-- <view class='formbtn-btn position-disabled' style="margin:0 40px; ">
+      <i-icon i-class='position-icon position-disabled' type="financial_fill " size="30 " color="#80848f "></i-icon>
+      <view class="position-text position-disabled ">支付</view>
+    </view> -->
+    <view class='formbtn-btn' style="margin-right:60px; ">
+      <i-icon i-class='position-icon' bindtap='zoomMax' type="fullscreen " size="30 " color="#80848f "></i-icon>
+      <view class="position-text ">放大</view>
+    </view>
+    <view class='formbtn-btn'>
+      <i-icon i-class='position-icon' bindtap='zoomMin' type="narrow " size="30 " color="#80848f "></i-icon>
+      <view class="position-text ">缩小</view>
+    </view>
+  </view>
+</view>
+<i-toast id="toast" />

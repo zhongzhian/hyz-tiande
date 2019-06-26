@@ -1,0 +1,10 @@
+/* pages/carpark/nonum/nonum.wxss */
+
+.nonum-carnum-title {
+  font-size: 70rpx;
+  padding: 20rpx;
+}
+
+.nonum-carnum-font24{
+  font-size: 24rpx;
+}

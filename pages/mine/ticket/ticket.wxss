@@ -1,0 +1,114 @@
+/* pages/mine/ticket/ticket.wxss */
+
+.card-list-item {
+  padding: 0 30rpx 30rpx 30rpx;
+  position: relative;
+  /* padding: 30rpx;
+  margin-top:-30rpx; */
+}
+
+.card-list-item-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 30rpx;
+  background: #f8f8f9;
+  z-index: 10;
+}
+
+.card-list-item-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 30rpx;
+  background: #f8f8f9;
+  z-index: 10;
+}
+
+.card-list-item-content {
+  /* border: 1px solid #63b359; */
+  background: #fff;
+  padding: 20rpx;
+  position: relative;
+  height: 150rpx;
+}
+
+.card-list-item-content-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 70%;
+  background: #63b359;
+  border-right: 1px #dddee1 dashed;
+}
+
+.card-list-item-content-right {
+  position: absolute;
+  left: 30%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.card-list-item-content-bottomquat {
+  position: absolute;
+  bottom: -15rpx;
+  right: -15rpx;
+  /* border: #63b359 1px solid; */
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: #f8f8f9;
+}
+
+.card-list-item-content-topquat {
+  position: absolute;
+  top: -15rpx;
+  right: -15rpx;
+  /* border: #63b359 1px solid; */
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: #f8f8f9;
+}
+
+.card-list-item-content-duration {
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  bottom: 20rpx;
+  right: 20rpx;
+  height: 120rpx;
+  font-size: 140rpx;
+  line-height: 140rpx;
+  text-align: center;
+  color: #fff;
+}
+
+.card-list-item-content-type {
+  position: absolute;
+  left: 30rpx;
+  top: 100rpx;
+  /* width: 100rpx; *//* height: 120rpx; */
+  font-size: 30rpx;
+  text-align: left;
+  /* color: #63b359; */
+}
+
+.card-list-item-content-validPeriod {
+  top: 80rpx;
+}
+
+.card-list-item-content-btn {
+  position: absolute;
+  left: 20rpx;
+  right: 20rpx;
+  top: 20rpx;
+  bottom:20rpx;
+  font-size: 50rpx;
+  text-align: center;
+  color: #fff;
+}

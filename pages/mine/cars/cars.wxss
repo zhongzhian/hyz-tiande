@@ -1,0 +1,5 @@
+/* pages/mine/cars/cars.wxss */
+.minecars-carnum{
+  text-align: center;
+  font-size: 80rpx;
+}

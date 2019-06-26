@@ -1,0 +1,103 @@
+/* pages/payment/record/record.wxss */
+
+.payment-list-item-content {
+  position: absolute;
+  left: 90rpx;
+  right: 30rpx;
+  top: 0;
+  bottom: 30rpx;
+  /* border: solid #dddee1 1px; */
+}
+
+.payment-list-item-content-checkbox {
+  height: 100rpx;
+}
+
+.payment-list-item-content-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* position: relative; */
+  font-size: 40rpx;
+  padding: 10rpx;
+  right: 30rpx;
+}
+
+.payment-list-item-content-desc {
+  /* position: absolute;
+  left: 0;
+  bottom: 10rpx; */
+  position: relative;
+  padding: 10rpx 10rpx 0;
+}
+
+.payment-list-item-content-price {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.payment-list-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200rpx;
+  background: #fff;
+  border-top: solid 1px #dddee1;
+}
+
+.payment-list-bottom-total {
+  font-size: 24rpx;
+  border-bottom: solid 1px #dddee1;
+  padding: 10rpx 30rpx;
+}
+
+.payment-list-bottom-toolbar {
+  position: relative;
+  padding: 30rpx;
+  height: 150rpx;
+}
+
+.payment-list-bottom-toolbar-checkbox {
+  font-size: 50rpx;
+  width: 250rpx;
+}
+
+.payment-list-bottom-toolbar-btn {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  bottom: 30rpx;
+  width: 200rpx;
+  vertical-align: middle;
+  line-height: 90rpx;
+  height: 90rpx;
+  text-align: center;
+  background: #495060;
+  color: #fff;
+  /* float: right;
+  padding: 20rpx; */
+}
+
+.disabledColor {
+  background-color: #bbbec4;
+}
+
+#shadow-root .i-cell {
+  font-size: 18px !important;
+  position: static !important;
+}
+
+.normal-scrolly {
+  position: absolute;
+  bottom: 200rpx;
+  top: 10rpx;
+}
+
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

@@ -1,0 +1,56 @@
+<!--pages/carpark/nonumout/nonumout.wxml-->
+<view class="normal-container">
+  <!-- carStatus:车辆牌照状态，1是无牌，2是有牌 -->
+  <form hidden='{{!recordInfo}}' bindsubmit="confirmCarnum" report-submit>
+    <view class="normal-panel">
+      <view class="normal-panel-title">
+        车辆出场
+      </view>
+      <view class="normal-panel-content">
+        <view>您的牌照如下</view>
+        <view class="nonum-carnum-title color-red">{{recordInfo.licensePlateNumber}}</view>
+        <view class="nonum-carnum-font24 color-subcontent">当前闸机口</view>
+        <view class="color-yellow">{{ parkGate }}</view>
+        <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'>进场时间</view>
+        <view>{{ recordInfo.entryTime }}</view>
+        <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'>出场时间</view>
+        <view>{{ outtime }}</view>
+      </view>
+      <!-- 已付款 -->
+      <view hidden="{{payStatus == '0'}}">
+        <view class="normal-panel-btnform">
+          <button type="primary" formType="submit" data-type="openGate">
+            开闸
+          </button>
+        </view>
+      </view>
+      <!-- 未付款 -->
+      <view hidden="{{payStatus == '1'}}">
+        <view class="normal-panel-desc">
+          <view>您必须先支付停车费才能离开停车场</view>
+        </view>
+        <view class="normal-panel-btnform">
+          <button type="primary" formType="submit" data-type="goPay">
+            支付
+          </button>
+        </view>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+  </form>
+  <view hidden='{{recordInfo}}' class="normal-panel">
+    <view class="normal-panel-title">
+      抱歉
+    </view>
+    <view class="normal-panel-content">
+      <view>未查到您的进场车辆</view>
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap='backToHome'>
+        确定
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+</view>
+<i-toast id="toast" />

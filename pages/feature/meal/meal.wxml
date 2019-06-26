@@ -1,0 +1,35 @@
+<!--pages/feature/meal/meal.wxml-->
+<view class="container">
+  <view class="normallist-topbar">
+    <view class="normallist-topbar-text">
+      注:仅显示未到访的邀请函
+    </view>
+    <!-- <view hidden='{{historys.length === 0}}' bindtap='clearTap' class="normallist-topbar-delete">
+      <i-icon size="20" type="trash"></i-icon>
+      <text>清除</text>
+    </view> -->
+  </view>
+  <view class="normallist-list">
+    <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" class="normallist-list-item">
+      <view class="normallist-list-item-content">
+        <text class='normallist-list-item-text'>{{item.visiteDate || '未知'}}</text>
+        <!-- <text class='normallist-list-item-desc'>{{item.visiteStart + '~' + item.visiteEnd}}</text> -->
+        <view class="normallist-list-item-detail">
+          <view class='normallist-list-item-detail-desc'>预约时间：{{item.visiteStart + '~' + item.visiteEnd}}</view>
+        </view>
+      </view>
+      <view bindtap="detail" data-item="{{item}}" data-bindex="{{bindex}}" class="normallist-list-item-toolbar">
+        <!-- <view bindtap="reInvite" data-item="{{item}}" data-bindex="{{bindex}}" style='margin-right:30px;' class="normallist-list-item-toolbar-action">
+          <i-icon size="20" color="#19be6b" type="mail"></i-icon>
+          <text>再次邀请</text>
+        </view> -->
+        <view class="normallist-list-item-toolbar-action floatright">
+          <i-icon size="20" color="#ff9900" type="trash"></i-icon>
+          <text>详情</text>
+        </view>
+      </view>
+    </view>
+    <i-load-more wx:if="{{historys.length === 0}}" tip="暂无数据" loading="{{ false }}" />
+  </view>
+</view>
+<i-toast id="toast" />

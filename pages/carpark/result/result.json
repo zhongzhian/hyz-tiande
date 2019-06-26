@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "停车缴费",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "i-load-more": "../../../dist/load-more/index",
+    "i-tabs": "../../../dist/tabs/index",
+    "i-tab": "../../../dist/tab/index",
+    "i-spin": "../../../dist/spin/index",
+    "i-panel": "../../../dist/panel/index",
+    "i-button": "../../../dist/button/index",
+    "i-input": "../../../dist/input/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index"
+  }
+}

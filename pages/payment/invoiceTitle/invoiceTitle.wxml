@@ -1,0 +1,52 @@
+<!--pages/payment/invoiceTitle/invoiceTitle.wxml-->
+<view class="container">
+  <view style='width:100%;'>
+    <i-panel title="发票抬头">
+      <view class="normal-radio-inline color-content">
+        <radio-group class="radio-group" bindchange="invoiceTypeChange">
+          <label class="radio normal-radio-item">
+            <radio value="self" checked="{{invoiceType === 'self'}}" /> 个人
+          </label>
+          <label class="radio normal-radio-item">
+            <radio value="company" checked="{{invoiceType === 'company'}}" /> 企业
+          </label>
+        </radio-group>
+      </view>
+      <view wx:if="{{invoiceType === 'company'}}">
+
+        <i-input value="{{ title }}" title="发票抬头" maxlength="50" type="textarea" placeholder="请输入公司名称(必填)" />
+        <i-input value="{{ taxNumber }}" title="税号" maxlength="18" placeholder="请输入18位税号(必填)" />
+        <i-input value="{{ companyAddress }}" title="单位地址" maxlength="50" type="textarea" placeholder="请输入单位地址" />
+        <i-input value="{{ telephone }}" title="电话号码" maxlength="11" type="number" placeholder="请输入电话号码" />
+        <i-input value="{{ bankName }}" title="开户银行" maxlength="50" type="textarea" placeholder="请输入开户银行" />
+        <i-input value="{{ bankAccount }}" title="银行账户" maxlength="18" type="number" placeholder="请输入银行账户" />
+        <view class="normal-radio-inline color-content">
+          <button type="primary" size="mini" bindtap='chooseTitle'>
+            选择微信抬头
+          </button>
+        </view>
+      </view>
+    </i-panel>
+  </view>
+  <view style='width:100%;'>
+    <i-panel title="接收方式">
+      <i-input value="{{ email }}" title="电子邮件" maxlength="50" type="text" placeholder="请输入电子邮件(必填)" />
+      <!-- <i-input value="{{ value3 }}" type="textarea" title="详细地址" placeholder="请输入详细地址(最多50字)" maxlength="50" />
+    <i-input value="{{ value4 }}" title="用户信息" disabled /> -->
+    </i-panel>
+  </view>
+  <view style='width:100%; margin-top:20rpx;'>
+    <view class='invoice-total-view color-content'>
+      <view class='invoice-total-label'>总金额</view>
+      <view class='invoice-total-price color-yellow'>{{totalmoney}}</view>
+      <view class='invoice-total-label'>元</view>
+    </view>
+    <view style='padding:20rpx;'>
+      <button type="primary" bindtap="invoiceSubmit" loading='{{loading}}'>
+        确定
+      </button>
+    </view>
+  </view>
+  <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+</view>
+<i-toast id="toast" />

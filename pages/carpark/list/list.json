@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "车辆列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index",
+    "i-modal": "../../../dist/modal/index",
+    "i-action-sheet": "../../../dist/action-sheet/index",
+    "i-load-more": "../../../dist/load-more/index"
+  }
+}

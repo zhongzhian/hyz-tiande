@@ -1,0 +1,87 @@
+/* pages/card/ticket/ticket.wxss */
+
+.card-ticket {
+  position: relative;
+  margin: 100rpx 20rpx;
+  background: #fff;
+  text-align: center;
+  border-radius: 5rpx;
+}
+
+.card-ticket-main {
+  padding: 50rpx;
+  border-bottom: 1px dashed #dddee1;
+  position: relative;
+}
+
+.card-ticket-head {
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+}
+
+.card-ticket-title {
+  font-size: 50rpx;
+  margin-bottom: 20rpx;
+}
+
+.card-ticket-desc {
+  font-size: 24rpx;
+  margin-bottom: 40rpx;
+}
+
+.card-ticket-btnbar {
+  padding: 50rpx 50rpx 0;
+}
+
+.card-ticket-btn {
+  font-size: 30rpx;
+  color: #fff;
+  background: #63b359;
+  width: 300rpx;
+}
+
+.card-ticket-list {
+  padding: 20rpx;
+}
+
+.card-ticket-detail {
+  font-size: 30rpx;
+  line-height: 50rpx;
+  /* border-bottom: 1px solid #dddee1; */
+  padding: 20rpx;
+}
+
+.card-ticket-main-leftcut {
+  position: absolute;
+  bottom: -10rpx;
+  left: -10rpx;
+  background: #63b359;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+
+.card-ticket-main-rightcut {
+  position: absolute;
+  bottom: -10rpx;
+  right: -10rpx;
+  background: #63b359;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+
+/* 
+.card-ticket-main:after,.card-ticket-list:before{
+	content:"";
+	width:1.4rem;
+	height:2rem;
+	position:absolute;
+	z-index:9;
+	border-width:1px;
+	border-style:solid;
+	border-color:transparent #E5004F transparent transparent;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	background-color:#f5f5f5;
+} */

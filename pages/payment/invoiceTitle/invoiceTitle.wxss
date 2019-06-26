@@ -1,0 +1,39 @@
+/* pages/payment/invoiceTitle/invoiceTitle.wxss */
+
+.normal-radio-inline {
+  padding: 40rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.normal-radio-item {
+  margin-right: 30rpx;
+  line-height: 40rpx;
+}
+
+.invoice-total-view {
+  position: relative;
+  display: flex;
+  background: #fff;
+  align-items: center;
+  line-height: 1.4;
+  font-size: 30rpx;
+  overflow: hidden;
+  padding: 7px 15px;
+}
+
+.invoice-total-label {
+  min-width: 65px;
+  padding-right: 10px;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.invoice-total-price {
+  font-size: 50rpx;
+  margin-right: 10rpx;
+}
+
+.normal-btninput-input{
+  width: 50%;
+}

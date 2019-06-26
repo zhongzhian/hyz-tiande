@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "开卡申请",
+  "usingComponents": {
+    "i-spin": "../../dist/spin/index",
+    "i-panel": "../../dist/panel/index",
+    "i-modal": "../../dist/modal/index",
+    "i-toast": "../../dist/toast/index",
+    "i-button": "../../dist/button/index",
+    "i-input": "../../dist/input/index",
+    "i-count-down": "../../dist/count-down/index"
+  }
+}

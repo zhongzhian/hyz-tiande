@@ -1,0 +1,51 @@
+<!--pages/home/visitor/myvisitor.wxml-->
+
+<view class="container">
+  <view class="normallist-topbar">
+    <view class="normallist-topbar-text">
+      注:仅显示已到访的记录
+    </view>
+    <view hidden='{{historys.length === 0}}' bindtap='clearTap' class="normallist-topbar-delete">
+      <i-icon size="20" type="trash"></i-icon>
+      <text>清除</text>
+    </view>
+  </view>
+  <view class="normallist-list">
+    <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" class="normallist-list-item">
+      <view class="normallist-list-item-content">
+        <text class='normallist-list-item-text'>{{item.visitorName}}</text>
+        <text class='normallist-list-item-desc'>{{item.telphone}}</text>
+        <view class="normallist-list-item-detail">
+          <view class='normallist-list-item-detail-desc'>邀请时间：{{item.createTime}}</view>
+          <!-- <view class='normallist-list-item-detail-desc'>预约到访时间：{{item.visitorTime}}</view> -->
+          <view class='normallist-list-item-detail-desc'>到访时间：{{item.arriveTime}}</view>
+          <view class='normallist-list-item-detail-desc'>离开时间：{{item.leaveTime}}</view>
+        </view>
+      </view>
+      <view class="normallist-list-item-toolbar">
+        <!-- <view bindtap="reInvite" data-item="{{item}}" data-bindex="{{bindex}}" style='margin-right:30px;' class="normallist-list-item-toolbar-action">
+          <i-icon size="20" color="#19be6b" type="mail"></i-icon>
+          <text>再次邀请</text>
+        </view> -->
+        <view bindtap="actionsTap" data-item="{{item}}" data-bindex="{{bindex}}" class="normallist-list-item-toolbar-action floatright">
+          <i-icon size="20" color="#ed3f14" type="trash"></i-icon>
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+    <i-load-more wx:if="{{historys.length === 0}}" tip="暂无数据" loading="{{ false }}" />
+    <i-load-more wx:if="{{isNoMore && (historys.length > 0)}}" tip="暂无更多数据" loading="{{ false }}" />
+    <i-load-more wx:if="{{loadmoreLoading}}" tip="正在加载" loading="{{ loadmoreLoading }}" />
+  </view>
+  <i-action-sheet visible="{{ visible2 }}" actions="{{ actions2 }}" show-cancel bind:cancel="handleCancel2" bind:click="handleClickItem2" mask-closable="{{ false }}">
+    <view hidden='{{isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>删除后无法恢复哦</text>
+    </view>
+    <view hidden='{{!isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>清除后后无法恢复哦</text>
+    </view>
+  </i-action-sheet>
+</view>
+<i-toast id="toast" />

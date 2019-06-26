@@ -1,0 +1,27 @@
+<!--pages/findlist/findlist.wxml-->
+<view class='car-info-view'>
+  <view class="car-info-item" bindtap="infoTap">
+    <view class="car-info-item-desc">
+      <!-- <i-icon i-class="car-info-item-icon" type="time" size="20" color="#2d8cf0"></i-icon> -->
+      {{info.licensePlateNumber}}
+    </view>
+    <view class="car-info-item-body">
+      <image class="infoimage" src="{{info.vehiclePicture}}" lazy-load="true" mode="aspectFit" />
+    </view>
+  </view>
+
+  <view class="car-maybe-title">
+    可能车辆
+  </view>
+  <view wx:for="{{info.maybe}}" wx:for-item="item" wx:for-index="bindex" class="car-maybe-item" data-item="{{item}}" bindtap="maybeTap">
+    <view class="car-maybe-item-view">
+      <view class="car-maybe-item-body">
+        <image class="mayimage" src="{{item.vehiclePicture}}" lazy-load="true" mode="aspectFit" style="width: 100%;" />
+      </view>
+      <view class="car-maybe-item-desc">{{item.licensePlateNumber}}
+      </view>
+    </view>
+  </view>
+</view>
+<i-load-more wx:if="{{!info.maybe||(info.maybe.length===0)}}" tip="暂无其他可能车辆" loading="{{ false }}" />
+<i-toast id="toast" />

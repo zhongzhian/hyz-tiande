@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "优惠券",
+  "navigationBarColor":"#63b359",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "i-spin": "../../../dist/spin/index",
+    "i-panel": "../../../dist/panel/index",
+    "i-button": "../../../dist/button/index",
+    "i-input": "../../../dist/input/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index"
+  }
+}

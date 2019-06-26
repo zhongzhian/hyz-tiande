@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "无牌车进场",
+  "usingComponents": {
+    "i-spin": "../../../dist/spin/index",
+    "i-panel": "../../../dist/panel/index",
+    "i-button": "../../../dist/button/index",
+    "i-input": "../../../dist/input/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index"
+  }
+}

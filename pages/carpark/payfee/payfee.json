@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "停车缴费",
+  "usingComponents": {
+    "i-spin": "../../../dist/spin/index",
+    "i-panel": "../../../dist/panel/index",
+    "i-button": "../../../dist/button/index",
+    "i-input": "../../../dist/input/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-modal": "../../../dist/modal/index",
+    "i-toast": "../../../dist/toast/index"
+  }
+}

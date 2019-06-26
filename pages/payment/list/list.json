@@ -1,0 +1,12 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "缴费",
+  "usingComponents": {
+    "van-icon": "../../../miniprogram_npm/vant-weapp/icon/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index",
+    "i-action-sheet": "../../../dist/action-sheet/index",
+    "i-load-more": "../../../dist/load-more/index",
+    "i-checkbox": "../../../dist/checkbox/index"
+  }
+}

@@ -1,0 +1,63 @@
+<!--pages/mine/carplace/carplace.wxml-->
+<view class="position-container">
+  <!-- <view class="page-head">
+    <view class="page-head-result">{{carResult}}</view>
+    <view class="page-head-line"></view>
+    <view class="page-head-desc">{{myloc}}</view>
+  </view> -->
+  <view class="position-region">
+    <view>
+      <view style="background-color: #ed3f14" class="position-region-point">
+      </view>
+      <text class="position-region-text">您的车位</text>
+    </view>
+  </view>
+  <view class="result-body">
+    <movable-area>
+      <movable-view x="{{x}}" y="{{y}}" out-of-bounds="true" bindchange="onChange" bindscale="onScale" scale scale-min="0.1" scale-max="1" scale-value="{{scale}}" direction="all">
+        <view hidden='{{!mySpace}}' style="left:{{carLeft+ 'px'}};top:{{carTop+ 'px'}};" class="pointdefault carposition" animation="{{textLeftAnimation}}"></view>
+        <view hidden='{{!mySpace}}' style="left:{{carLeft+ 'px'}};top:{{carTop+ 'px'}};" class="pointdefault carposition"></view>
+        <image class="image " src="{{svgUrl}} " lazy-load="true " mode="center " style="width: 100%; height: 100%; " />
+      </movable-view>
+    </movable-area>
+  </view>
+  <view class="info-view ">
+    <view class="info-carnum ">{{mySpace.parkingLotName || '--'}}
+      <text class="info-desc ">停车场</text>
+    </view>
+    <view class="info-carnum ">{{mySpace.parkingArea.name || '--'}}
+      <text class="info-desc ">区域</text>
+    </view>
+    <view class="info-carnum ">{{mySpace.label || '--'}}
+      <text class="info-desc ">车位号</text>
+    </view>
+  </view>
+
+  <view class="formbtn ">
+    <view class='formbtn-btn' style="margin-right:60px; ">
+      <i-icon i-class='position-icon' bindtap='zoomMax' type="fullscreen " size="30 " color="#80848f "></i-icon>
+      <view class="position-text ">放大</view>
+    </view>
+    <view class='formbtn-btn'>
+      <i-icon i-class='position-icon' bindtap='zoomMin' type="narrow " size="30 " color="#80848f "></i-icon>
+      <view class="position-text ">缩小</view>
+    </view>
+  </view>
+</view>
+
+<view wx:if='{{showModal}}' class="normal-mask">
+  <view class="normal-panel" style='top:20%;'>
+    <view class="normal-panel-title">
+      抱歉
+    </view>
+    <view class="normal-panel-desc">
+      您目前没有租用车位
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap='backPre'>
+        返回
+      </button>
+    </view>
+  </view>
+</view>
+<i-toast id="toast" />

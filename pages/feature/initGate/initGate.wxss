@@ -1,0 +1,63 @@
+/* pages/feature/initGate/initGate.wxss */
+
+.erweima-container {
+  position: absolute;
+  top: 50px;
+  left: 30px;
+  right: 30px;
+  bottom: 100px;
+  text-align: center;
+  border-radius: 10rpx;
+  z-index: 10;
+}
+
+.erweima-code-title {
+  padding: 50rpx 20rpx 10rpx;
+  font-size: 40rpx;
+}
+
+.erweima-code-subtitle {
+  padding: 10rpx 20rpx 50rpx;
+  font-size: 24rpx;
+}
+
+.erweima-code-image {
+  position: relative;
+  display: inline-block;
+  width: 500rpx;
+  height: 500rpx;
+}
+
+.erweima-canvas {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  /* z-index: -1; */
+}
+
+.erweima-errorMsg {
+  padding: 20rpx;
+  position: absolute;
+  top: 50%;
+  left: 20rpx;
+  right: 20rpx;
+  text-align: center;
+}
+
+.initgate-btnform {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+}
+
+.normal-container-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #464854;
+  /* opacity: 0.7; */
+}

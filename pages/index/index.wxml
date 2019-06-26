@@ -1,0 +1,94 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo-view">
+    <view wx:if="{{!hasUserInfo && canIUse}}" class="userinfo-card">
+      <button style='background: transparent;' class="formid-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        <view class="userinfo-left">
+          <image class="userinfo-image" src="../../image/noperson.png" background-size="cover" style='background:#fff;border:1px solid #fff;'></image>
+        </view>
+        <view class="userinfo-right">
+          <text class="userinfo-title color-content">未登录</text>
+          <text class="userinfo-subtitle color-subcontent">---</text>
+          <image class="userinfo-cardimage" src="../../image/liede.png" background-size="cover"></image>
+        </view>
+      </button>
+    </view>
+    <view wx:else class="userinfo-card">
+      <view class="userinfo-left">
+        <image class="userinfo-image" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      </view>
+      <view class="userinfo-right">
+        <text class="userinfo-title color-content">{{userInfo.nickName}}</text>
+        <text class="userinfo-subtitle color-subcontent">{{telphone}}</text>
+        <image class="userinfo-cardimage" src="../../image/liede.png" background-size="cover"></image>
+      </view>
+      <view class="userinfo-bottom color-content">
+        {{userCompany.name}}
+      </view>
+      <view class="userinfo-bottom color-subcontent" style='bottom:10rpx;font-size:24rpx;'>
+        {{userDept}}
+      </view>
+    </view>
+  </view>
+  <view class="usermenu-view">
+    <view class="formbtn ">
+      <form class="formid-form" bindsubmit="formSubmit" report-submit>
+        <view id="{{value.key}}" style='height:100rpx;' bindtap='gotoPage' wx:for="{{myList}}" wx:for-index="key" wx:for-item="value" class='formbtn-btn'>
+          <button plain class="formid-btn" form-type="submit" data-type="{{value.key}}">
+            <image class="formbtn-btn-image" src="{{value.icon}}"></image>
+            <view class="position-text">{{value.label}}</view>
+          </button>
+        </view>
+      </form>
+    </view>
+  </view>
+  <view class="mt20 text-center color-bgwhite">
+    <!-- <view class="normal-title color-content">访客管理</view> -->
+    <view class="formbtn " style='text-align:left;'>
+      <form style='position:relative;' class="formid-form" bindsubmit="formSubmit" report-submit>
+        <view id="{{value.key}}" style='height:200rpx;' bindtap='gotoPage' wx:for="{{toolsList}}" wx:for-index="key" wx:for-item="value" class='formbtn-toolsbtn'>
+          <button plain class="formid-btn" form-type="submit" data-type="{{value.key}}">
+            <image class="formbtn-toolsbtn-image" src="{{value.icon}}"></image>
+            <view class="position-text color-content">{{value.label}}</view>
+          </button>
+        </view>
+      </form>
+    </view>
+  </view>
+
+  <view class="mt20 text-center wd100cen color-bgwhite">
+    <view class="normal-title color-content" style='font-weight:700;'>记录·单据</view>
+    <view style='padding:0 40rpx;'>
+      <view class="formbtn-overflowX" style='text-align:left;'>
+        <form style='position:relative;' class="formid-form" bindsubmit="formSubmit" report-submit>
+          <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+            <view id="{{value.key}}" bindtap='gotoPage' wx:for="{{recordList}}" wx:for-index="key" wx:for-item="value" class='formbtn-btn2'>
+              <button plain class="formid-btn" form-type="submit" data-type="{{value.key}}">
+                <image class="formbtn-btn-image" src="{{value.icon}}"></image>
+                <view class="position-text">{{value.label}}</view>
+              </button>
+            </view>
+          </scroll-view>
+        </form>
+      </view>
+    </view>
+  </view>
+  <view class="mt20 text-center wd100cen color-bgwhite">
+    <view class="normal-title color-content" style='font-weight:700;'>物业服务</view>
+    <view class="formbtn " style='text-align:left;'>
+      <form style='position:relative;' class="formid-form" bindsubmit="formSubmit" report-submit>
+        <!-- <view class='formbtn-listitem'>
+          <image class="formbtn-btn-image" src="../../image/menjinerweima.png"></image>
+          <view class="position-text color-content">{{value.label}}</view>
+        </view> -->
+        <view id="{{value.key}}" bindtap='gotoPage' wx:for="{{wuyeList}}" wx:for-index="key" wx:for-item="value" class='formbtn-btn'>
+          <button plain class="formid-btn" form-type="submit" data-type="{{value.key}}">
+            <image class="formbtn-btn-image" src="{{value.icon}}"></image>
+            <view class="position-text color-content">{{value.label}}</view>
+          </button>
+        </view>
+      </form>
+    </view>
+  </view>
+</view>
+<i-toast id="toast" />

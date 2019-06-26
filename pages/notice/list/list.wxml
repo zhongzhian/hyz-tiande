@@ -1,0 +1,49 @@
+<!--pages/notice/list/list.wxml-->
+
+<view class="container">
+  <!-- <view class="normallist-topbar">
+    <view class="normallist-topbar-text">
+      注:仅显示已到访的记录
+    </view>
+    <view hidden='{{historys.length === 0}}' bindtap='clearTap' class="normallist-topbar-delete">
+      <i-icon size="20" type="trash"></i-icon>
+      <text>清除</text>
+    </view>
+  </view> -->
+  <view class="normallist-list" style='top:10rpx;'>
+    <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" class="normallist-list-item">
+      <view class="normallist-list-item-content">
+        <text class='normallist-list-item-text'>{{item.informationSource}}</text>
+        <text class='normallist-list-item-desc'>{{item.releaseTime}}</text>
+        <view class="normallist-list-item-detail">
+          <view wx:if="location" class='normallist-list-item-detail-desc'>地点：{{item.location || '无'}}</view>
+          <view class='normallist-list-item-detail-desc moretext'>内容：{{item.content || '无'}}</view>
+          <view class='normallist-list-item-detail-desc moretext'>备注：{{item.description || '无'}}</view>
+        </view>
+      </view>
+      <view bindtap="detail" data-item="{{item}}" data-bindex="{{bindex}}" class="normallist-list-item-toolbar">
+        <!-- <view style='margin-right:30px;' class="normallist-list-item-toolbar-action">
+          发布时间：{{item.releaseTime}}
+        </view> -->
+        <view class="normallist-list-item-toolbar-action floatright">
+          <i-icon size="20" color="#ff9900" type="barrage"></i-icon>
+          <text>详情</text>
+        </view>
+      </view>
+    </view>
+    <i-load-more wx:if="{{historys.length === 0}}" tip="暂无数据" loading="{{ false }}" />
+    <i-load-more wx:if="{{isNoMore && (historys.length > 0)}}" tip="暂无更多数据" loading="{{ false }}" />
+    <i-load-more wx:if="{{loadmoreLoading}}" tip="正在加载" loading="{{ loadmoreLoading }}" />
+  </view>
+  <i-action-sheet visible="{{ visible2 }}" actions="{{ actions2 }}" show-cancel bind:cancel="handleCancel2" bind:click="handleClickItem2" mask-closable="{{ false }}">
+    <view hidden='{{isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>删除后无法恢复哦</text>
+    </view>
+    <view hidden='{{!isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>清除后后无法恢复哦</text>
+    </view>
+  </i-action-sheet>
+</view>
+<i-toast id="toast" />

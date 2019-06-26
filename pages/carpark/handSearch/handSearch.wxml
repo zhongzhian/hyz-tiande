@@ -1,0 +1,62 @@
+<!--index.wxml-->
+<!-- 按车牌号 -->
+<view class="container">
+  <view class="page-head">
+    <view class="page-head-title">
+      请输入要查找车辆的车牌号
+    </view>
+    <view class="page-head-line"></view>
+  </view>
+  <view class="carnum-form">
+    <button class="carnum-form-input {{inputindex===0?'carnum-form-provice':''}}" data-inputindex="0" bindtap="btntap"> {{carNum.province}}</button>
+    <button class="carnum-form-input {{inputindex===1?'carnum-form-provice':''}}" data-inputindex="1" bindtap="btntap"> {{carNum.first}}</button>
+    <button wx:key="item" wx:for-index="bindex" data-inputindex="{{bindex+2}}" bindtap="btntap" wx:for="{{carNum.nums}}" data-bindex="{{bindex}}" class="carnum-form-input {{inputindex===(bindex+2)?'carnum-form-provice':''}}"> {{item}}</button>
+    <button class="carnum-form-input carnum-form-plus {{inputindex===7?'carnum-form-provice':''}}" data-inputindex="7" bindtap="btntap"> {{carNum.other}}</button>
+  </view>
+  <!-- <view wx:if="{{mycars.length>0}}" class="index-history-view">
+    我的:
+    <view wx:if="{{bindex<3}}" wx:key="item" wx:for-index="bindex" wx:for="{{mycars}}" data-item="{{item}}" bindtap="mystap" class="index-history-view-item">{{item.licensePlateNumber}}</view>
+  </view> -->
+  <!-- (mycars.length === 0)&& -->
+  <view wx:if="{{(historys.length>0)}}" class="index-history-view">
+    最近:
+    <view wx:if="{{bindex<3}}" wx:key="item" wx:for-index="bindex" wx:for="{{historys}}" data-item="{{item}}" bindtap="historytap" class="index-history-view-item">{{item}}</view>
+  </view>
+  <view style="padding-top:10px;">
+    <!-- <view class="page-head-title">请选择黄色空格内容
+    </view> -->
+    <view class="page-head-line"></view>
+  </view>
+  <view class="index-carnum-pickerpanel" style='top:400rpx;'>
+    <swiper style='height:100%;' indicator-dots="true" autoplay="{{autoplay}}">
+      <block>
+        <swiper-item>
+          <view class="input-panel">
+            <button wx:key="item" wx:for-index="bindex" bindtap="codetap" wx:for="{{provinces}}" data-item="{{item}}" class="input-panel-btn">
+              {{item}}</button>
+          </view>
+        </swiper-item>
+      </block>
+      <block>
+        <swiper-item>
+          <view class="input-panel">
+            <button wx:key="item" wx:for-index="bindex" bindtap="codetap" wx:for="{{codes}}" data-item="{{item}}" class="input-panel-btn">
+              {{item}}</button>
+            <view></view>
+            <button wx:key="item" wx:for-index="bindex" bindtap="codetap" wx:for="{{numcodes}}" data-item="{{item}}" class="input-panel-btn">
+              {{item}}</button>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
+
+<view class="formbtn">
+  <i-button i-class="step-btn" bind:click="findCar" type="primary" shape="circle" size="small">
+    查 找
+  </i-button>
+  <!-- <button bindtap='findCar' type="primary">查找</button> -->
+  <!-- <i-button type="ghost" bind:click="findCar">查找</i-button> -->
+</view>
+<i-toast id="toast" />

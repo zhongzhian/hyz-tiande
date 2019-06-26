@@ -1,0 +1,39 @@
+/* pages/notice/info/info.wxss */
+.notice-form-label {
+  padding: 15px 15px 0;
+  font-size: 14px;
+  width:70px;
+}
+
+.notice-form-content {
+  padding: 15px;
+  font-size: 14px;
+  color: #495060;
+}
+
+.notice-form-content-content{
+  color: #495060;
+  font-size:32rpx;
+}
+
+.notice-form-textarea {
+  background-color: #f8f8f9;
+  /* width: 100%; */
+  padding: 10rpx;
+}
+
+.form-row{
+  position: relative;
+  width: 100%;
+  height: 70rpx;
+}
+
+.floatleft{
+  padding-top: 15px;
+  float: left;
+  font-size: 14px;
+}
+
+.disable-input{
+  color: #bbbec4 !important;
+}

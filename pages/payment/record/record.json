@@ -1,0 +1,11 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "缴费记录",
+  "usingComponents": {
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index",
+    "i-action-sheet": "../../../dist/action-sheet/index",
+    "i-load-more": "../../../dist/load-more/index",
+    "i-checkbox": "../../../dist/checkbox/index"
+  }
+}

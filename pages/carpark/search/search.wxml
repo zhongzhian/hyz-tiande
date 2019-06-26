@@ -1,0 +1,202 @@
+<!--index.wxml-->
+<i-tabs i-class="numtime-tab" current="{{ current }}" bindchange="switchCheckWay">
+  <i-tab key="num" title="按车牌号"></i-tab>
+  <!-- <i-tab key="num2" title="模糊查找"></i-tab> -->
+  <i-tab key="time" title="无牌照"></i-tab>
+</i-tabs>
+
+<!-- 按车牌号 -->
+<view hidden="{{current !== 'num'}}" class="container">
+  <view class="page-head">
+    <view class="page-head-title">
+      <picker wx:if="{{mycars.length>0}}" range="{{mycars}}" bindchange="bindMineChange">
+        <button style='background:#2d8cf0;' type="primary" size="mini">
+          选择我的车牌
+        </button>
+      </picker>
+      <text wx:if="{{mycars.length === 0}}">请输入要查找车辆的车牌号</text>
+    </view>
+    <view class="page-head-line"></view>
+  </view>
+  <!-- <view class="page-head-mine color-subcontent">
+    <view class="page-head-mine-container">
+      <view class="page-head-mine-right">
+        <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+          <view wx:if="{{bindex<3}}" wx:key="item" wx:for-index="bindex" wx:for="{{mycars}}" data-item="{{item}}" bindtap="mystap" class="index-history-view-item">{{item.licensePlateNumber}}</view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class="page-head-line"></view>
+  </view> -->
+  <view class="carnum-form">
+    <!-- <i-icon i-class='position-icon' bindtap='zoomMax' type="mine_fill " size="26 " color="#80848f "></i-icon> -->
+    <button class="carnum-form-input {{inputindex===0?'carnum-form-provice':''}}" data-inputindex="0" bindtap="btntap"> {{carNum.province}}</button>
+    <button class="carnum-form-input {{inputindex===1?'carnum-form-provice':''}}" data-inputindex="1" bindtap="btntap"> {{carNum.first}}</button>
+    <button wx:key="item" wx:for-index="bindex" data-inputindex="{{bindex+2}}" bindtap="btntap" wx:for="{{carNum.nums}}" data-bindex="{{bindex}}" class="carnum-form-input {{inputindex===(bindex+2)?'carnum-form-provice':''}}"> {{item}}</button>
+    <button class="carnum-form-input carnum-form-plus {{inputindex===7?'carnum-form-provice':''}}" data-inputindex="7" bindtap="btntap"> {{carNum.other}}</button>
+  </view>
+  <!-- <view wx:if="{{mycars.length>0}}" class="index-history-view">
+    我的:
+    <view wx:if="{{bindex<3}}" wx:key="item" wx:for-index="bindex" wx:for="{{mycars}}" data-item="{{item}}" bindtap="mystap" class="index-history-view-item">{{item.licensePlateNumber}}</view>
+  </view> -->
+  <!-- <view wx:if="{{(mycars.length === 0)&&(historys.length>0)}}" class="index-history-view"> -->
+  <view wx:if="{{historys.length>0}}" class="index-history-view">
+    最近:
+    <view wx:if="{{bindex<3}}" wx:key="item" wx:for-index="bindex" wx:for="{{historys}}" data-item="{{item}}" bindtap="historytap" class="index-history-view-item">{{item}}</view>
+  </view>
+  <view style="padding-top:10px;">
+    <!-- <view class="page-head-title">请选择黄色空格内容
+    </view> -->
+    <view class="page-head-line"></view>
+  </view>
+  <view class="index-carnum-pickerpanel" style='top:400rpx;'>
+    <swiper style='height:100%;' indicator-dots="true" autoplay="{{autoplay}}">
+      <block>
+        <swiper-item>
+          <view class="input-panel">
+            <button wx:key="item" wx:for-index="bindex" bindtap="codetap" wx:for="{{provinces}}" data-item="{{item}}" class="input-panel-btn">
+              {{item}}</button>
+          </view>
+        </swiper-item>
+      </block>
+      <block>
+        <swiper-item>
+          <view class="input-panel">
+            <button wx:key="item" wx:for-index="bindex" bindtap="codetap" wx:for="{{codes}}" data-item="{{item}}" class="input-panel-btn">
+              {{item}}</button>
+            <view></view>
+            <button wx:key="item" wx:for-index="bindex" bindtap="codetap" wx:for="{{numcodes}}" data-item="{{item}}" class="input-panel-btn">
+              {{item}}</button>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
+
+<!-- 模糊查找 -->
+<view hidden="{{current !== 'num2'}}" class="container">
+  <view class="page-head">
+    <view class="page-head-title">
+      请输入车牌后四位尾号
+    </view>
+    <view class="page-head-line"></view>
+    <!-- <view class="page-head-desc">目前只支持后三位或者后四位</view> -->
+  </view>
+  <view class="carnum-form">
+    <button wx:key="item" wx:for-index="bindex" data-inputindex2="{{bindex}}" bindtap="btntap2" wx:for="{{carNum2}}" data-bindex="{{bindex}}" class="carnum-form-input2 {{inputindex2===bindex?'carnum-form-provice':''}}"> {{item}}</button>
+  </view>
+  <view style="padding-top:10px;">
+    <!-- <view class="page-head-title">请选择黄色空格内容
+    </view> -->
+    <view class="page-head-line"></view>
+  </view>
+  <view class="index-carnum-pickerpanel" style='top:400rpx;'>
+    <view class="input-panel">
+      <button wx:key="item" wx:for-index="bindex" bindtap="codetap2" wx:for="{{numcodes}}" data-item="{{item}}" class="input-panel-btn">
+        {{item}}</button>
+      <button wx:key="item" wx:for-index="bindex" bindtap="codetap2" wx:for="{{codes2}}" data-item="{{item}}" class="input-panel-btn">
+        {{item}}</button>
+    </view>
+  </view>
+</view>
+
+<!-- 按时间 -->
+<view hidden="{{current !== 'time'}}" class="container" style='padding:20rpx 50rpx;'>
+  <!-- <i-notice-bar style="width:100%;" icon="systemprompt">
+    本查询只针对无号牌车辆
+  </i-notice-bar> -->
+
+  <view hidden='{{!recordInfo}}' class="carpark-search-nonumcard">
+    <view class="carpark-search-nonumcard-panel color-border">
+      <!-- <view class="normal-panel-title">
+        您的入场车辆
+      </view> -->
+      <view class="carpark-search-nonumcard-content">
+        <view class='color-subcontent'>您的无牌车辆</view>
+        <view class="carpark-search-nonumcard-title color-red">{{recordInfo.licensePlateNumber}}</view>
+        <view class="carpark-search-nonumcard-left">
+          <view class="nonum-carnum-font24 color-subcontent">进场时间</view>
+          <view style='margin-top:10rpx;' class="color-content">{{recordInfo.entryTime }}</view>
+        </view>
+        <view class="carpark-search-nonumcard-right">
+          <view class="nonum-carnum-font24 color-subcontent">闸机口</view>
+          <view style='margin-top:10rpx;' class="color-content">{{recordInfo.entryName || recordInfo.entryNo}}</view>
+        </view>
+        <view style='clear:both;'></view>
+      </view>
+      <view class="carpark-search-nonumcard-toolbar">
+        <view class="carpark-search-nonumcard-left">
+          <button class="sharebtn" open-type='share'>
+            <i-icon size="20" color="#ff9900" type="group"></i-icon>
+            <text style='margin-left:10rpx;' class="color-content">共享</text>
+          </button>
+        </view>
+        <view wx:if="{{recordInfo.payment.status != '1'}}" bindtap="goPay" class="carpark-search-nonumcard-right">
+          <button class="sharebtn">
+            <i-icon size="20" color="#19be6b" type="financial_fill"></i-icon>
+            <text style='margin-left:10rpx;' class="color-content">缴费</text>
+          </button>
+        </view>
+        <view wx:if="{{recordInfo.payment.status === '1'}}" bindtap="goPay" class="carpark-search-nonumcard-right">
+          <button class="sharebtn">
+            <i-icon size="20" color="#19be6b" type="financial_fill"></i-icon>
+            <text style='margin-left:10rpx;' class="color-content">已缴费</text>
+          </button>
+        </view>
+        <view style='clear:both;'></view>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+  </view>
+  <view class="page-head">
+    <view class="page-head-title">
+      查找以下日期至今入场的无牌车辆
+    </view>
+    <view class="page-head-line"></view>
+  </view>
+  <view>
+    <view class="carnum-tab-datebtn">
+      <picker mode="date" value="{{startdate}}" bindchange="bindStartDateChange">
+        <view class="date-input">{{startdate}}</view>
+      </picker>
+    </view>
+    <!-- <view class="carnum-tab-btn leftbtn">
+      <picker mode="date" value="{{startdate}}" bindchange="bindStartDateChange">
+        <view class="left-input">{{startdate}}</view>
+      </picker>
+    </view>
+    <view class="carnum-tab-btn rightbtn">
+      <picker mode="time" value="{{starttime}}" start="00:00" end="23:59" bindchange="bindStartTimeChange">
+        <view class="right-input">{{starttime}}</view>
+      </picker>
+    </view> -->
+  </view>
+  <!-- <view class="page-head">
+    <view class="page-head-title">
+      请输入结束日期和时间
+    </view>
+    <view class="page-head-line"></view>
+  </view>
+  <view>
+    <view class="carnum-tab-btn leftbtn">
+      <picker mode="date" value="{{enddate}}" bindchange="bindEndDateChange">
+        <view class="left-input">{{enddate}}</view>
+      </picker>
+    </view>
+    <view class="carnum-tab-btn rightbtn">
+      <picker mode="time" value="{{endtime}}" start="00:00" end="23:59" bindchange="bindEndTimeChange">
+        <view class="right-input">{{endtime}}</view>
+      </picker>
+    </view>
+  </view> -->
+</view>
+
+<view class="formbtn">
+  <i-button i-class="step-btn" bind:click="findCar" type="primary" shape="circle" size="small">
+    查 找
+  </i-button>
+  <!-- <button bindtap='findCar' type="primary">查找</button> -->
+  <!-- <i-button type="ghost" bind:click="findCar">查找</i-button> -->
+</view>
+<i-toast id="toast" />

@@ -1,0 +1,55 @@
+<!--pages/feature/checkInvite/checkInvite.wxml-->
+
+<view class="normal-container">
+  <!-- inviteStatus:被邀请人状态，1是未绑定过手机号，2是绑定过且有邀请函，3是绑定过但没有邀请函 -->
+  <form hidden='{{inviteStatus != 1}}' bindsubmit="confirmInvite" report-submit>
+    <view class="normal-panel">
+      <view class="normal-panel-title">
+        邀请确认
+      </view>
+      <i-panel>
+        <i-input name="phone" value="{{ phone }}" type="number" maxlength='11' title="预约电话" placeholder="请输入预约手机号" />
+      </i-panel>
+      <!-- <view class="normal-panel-desc">
+        请输入预约手机号
+      </view> -->
+      <view class="normal-panel-btnform">
+        <button type="primary" formType="submit">
+          查找
+        </button>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+  </form>
+  <view hidden='{{inviteStatus !=2}}' class="normal-panel">
+    <view class="normal-panel-title">
+      邀请函
+    </view>
+    <i-panel>
+      <i-input value="{{ invitation.visitorName }}" disabled title="被邀请人" />
+      <i-input value="{{ invitation.telphone }}" disabled type="number" title="联系电话" />
+      <i-input value="{{ invitation.visitorTime }}" disabled title="到访时间" />
+    </i-panel>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap="receiveInvite">
+        确认
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+  <view hidden='{{inviteStatus != 3}}' class="normal-panel">
+    <view class="normal-panel-title">
+      抱歉
+    </view>
+    <view class="normal-panel-desc">
+      目前没有您的邀请函
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap="backToHome">
+        返回首页
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+
+</view>

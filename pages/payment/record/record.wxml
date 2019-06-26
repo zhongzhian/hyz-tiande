@@ -1,0 +1,87 @@
+<!--pages/payment/record/record.wxml-->
+<view class="container">
+  <!-- <scroll-view scroll-y class="normal-scrolly" bindscrolltoupper="scrollTop" bindscrolltolower="scrollBottom">
+    <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" class="normallist-list-item" style='padding:20rpx 0;'>
+      <view class="normallist-list-item-content" style='padding:17px 0;'>
+        <i-checkbox disabled='{{item.openInvoice}}' checked="{{item.selected}}" bindchange="changeCheck" i-class="payment-list-item-content-checkbox" data-item="{{item}}" data-bindex="{{bindex}}">
+        </i-checkbox>
+        <view class="payment-list-item-content">
+          <view class="payment-list-item-content-desc color-subcontent" style='position:relative;'>
+            <i-icon size="20" color="#80848f" type="time"></i-icon>
+            <text>{{item.payTime}}</text>
+          </view>
+          <view class="payment-list-item-content-desc color-subcontent" style='position:relative;'>
+            <i-icon size="20" color="#80848f" type="label"></i-icon>
+            <text>{{item.accountantSubjects}}</text>
+          </view>
+          <view class="payment-list-item-content-desc color-subcontent" style='position:relative;'>
+            <i-icon size="20" color="#80848f" type="label"></i-icon>
+            <text>{{item.detailSubjects}}</text>
+          </view>
+          <view class="payment-list-item-content-price">
+            <text class="color-yellow" style='font-size:35px;line-height:35px;'>{{item.payMoney}}</text>元</view>
+        </view>
+      </view>
+    </view>
+
+    <i-load-more wx:if="{{historys.length === 0}}" tip="暂无可用票券" loading="{{ false }}" />
+    <i-load-more wx:if="{{isNoMore && (historys.length > 0)}}" tip="暂无更多可用票券" loading="{{ false }}" />
+    <i-load-more wx:if="{{loadmoreLoading}}" tip="正在加载" loading="{{ loadmoreLoading }}" />
+  </scroll-view> -->
+
+  <view class="normallist-list">
+    <view wx:for="{{historys}}" wx:key="item" wx:for-index="bindex" class="normallist-list-item" style='padding:20rpx 0;'>
+      <view class="normallist-list-item-content" style='padding:17px 0;'>
+        <i-checkbox disabled='{{item.openInvoice}}' checked="{{item.selected}}" bindchange="changeCheck" i-class="payment-list-item-content-checkbox" data-item="{{item}}" data-bindex="{{bindex}}">
+        </i-checkbox>
+        <view class="payment-list-item-content">
+          <view class="payment-list-item-content-desc color-subcontent" style='position:relative;'>
+            <i-icon size="20" color="#80848f" type="time"></i-icon>
+            <text>{{item.payTime}}</text>
+          </view>
+          <view class="payment-list-item-content-desc color-subcontent" style='position:relative;'>
+            <i-icon size="20" color="#80848f" type="label"></i-icon>
+            <text>{{item.accountantSubjects}}</text>
+          </view>
+          <view class="payment-list-item-content-desc color-subcontent" style='position:relative;'>
+            <i-icon size="20" color="#80848f" type="label"></i-icon>
+            <text>{{item.detailSubjects}}</text>
+          </view>
+          <view class="payment-list-item-content-price">
+            <text class="color-yellow" style='font-size:35px;line-height:35px;'>{{item.payMoney}}</text>元</view>
+        </view>
+      </view>
+    </view>
+
+    <i-load-more wx:if="{{historys.length === 0}}" tip="暂无可用票券" loading="{{ false }}" />
+    <i-load-more wx:if="{{isNoMore && (historys.length > 0)}}" tip="暂无更多可用票券" loading="{{ false }}" />
+    <i-load-more wx:if="{{loadmoreLoading}}" tip="正在加载" loading="{{ loadmoreLoading }}" />
+    <view style='height:200rpx;'></view>
+  </view>
+  <view class="payment-list-bottom">
+    <view class="payment-list-bottom-total">
+      <text class='color-yellow'>{{orderNum}}</text>个订单，共
+      <text class='color-yellow'>¥{{totalPrice}}</text>元
+    </view>
+    <view class="payment-list-bottom-toolbar">
+      <i-checkbox i-class="payment-list-bottom-toolbar-checkbox" value="全选" checked="{{isAll}}" bindchange="allcheckChange">
+      </i-checkbox>
+      <!-- <checkbox class="payment-list-bottom-toolbar-checkbox" value="全选" checked="{{isAll}}" bindchange="allcheckChange">
+      </checkbox> -->
+      <view bindtap="goToPay" class="payment-list-bottom-toolbar-btn {{orderNum>0?'':'disabledColor'}}">
+        下一步
+      </view>
+    </view>
+  </view>
+  <i-action-sheet visible="{{ visible2 }}" actions="{{ actions2 }}" show-cancel bind:cancel="handleCancel2" bind:click="handleClickItem2" mask-closable="{{ false }}">
+    <view hidden='{{isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>删除后无法恢复哦</text>
+    </view>
+    <view hidden='{{!isAll}}' slot="header" style="padding: 16px">
+      <view style="color: #444;font-size: 16px">确定吗？</view>
+      <text>清除后后无法恢复哦</text>
+    </view>
+  </i-action-sheet>
+</view>
+<i-toast id="toast" />

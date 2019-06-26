@@ -1,0 +1,29 @@
+<!--pages/card/ticket/ticket.wxml-->
+<view class="normal-container" style='background:#63b359;'>
+  <view class="card-ticket">
+    <view class="card-ticket-main">
+      <view class="card-ticket-head color-subcontent">
+        天德广场
+      </view>
+      <view class="card-ticket-title color-content">
+        5小时停车抵扣券
+      </view>
+      <view class="card-ticket-desc color-subcontent">
+        {{tid}}
+      </view>
+      <view class="card-ticket-btnbar">
+        <button wx:if="{{!hasPick}}"  class="card-ticket-btn" bindtap='doPick'>
+          立即使用
+        </button>
+      </view>
+      <view class="card-ticket-main-leftcut"></view>
+      <view class="card-ticket-main-rightcut"></view>
+    </view>
+    <view class="card-ticket-list color-subcontent">
+      <view class="card-ticket-detail">
+        {{type}}
+      </view>
+    </view>
+  </view>
+  <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+</view>

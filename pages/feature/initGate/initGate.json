@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "门禁初始化",
+  "navigationBarBackgroundColor": "#464854",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "i-spin": "../../../dist/spin/index",
+    "i-panel": "../../../dist/panel/index",
+    "i-action-sheet": "../../../dist/action-sheet/index",
+    "i-button": "../../../dist/button/index",
+    "i-input": "../../../dist/input/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index"
+  }
+}

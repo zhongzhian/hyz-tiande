@@ -1,0 +1,160 @@
+<!--pages/carpark/payfee/payfee.wxml-->
+<view class="normal-container">
+  <!-- carStatus:车辆牌照状态，1是无牌，2是有牌 -->
+  <form hidden='{{!recordInfo}}' bindsubmit="confirmCarnum" report-submit>
+   <!-- style='position:relative;background:#fff;' -->
+    <view class="normal-panel payfee-normal-panel">
+      <!-- <view class="normal-panel-title">
+        缴费单
+      </view> -->
+      <view class="normal-panel-content" style='border-bottom:1px dashed #dddee1;position:relative;'>
+        <!-- <view>您的牌照</view> -->
+        <view class="nonum-carnum-title color-red">{{recordInfo.licensePlateNumber}}</view>
+        <!-- <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'>付款状态</view> -->
+        <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'></view>
+        <view wx:if="{{payment.status === '0'}}" class="color-red">{{ payment.statusName }}</view>
+        <view wx:if="{{payment.status === '1'}}" class="color-green">{{ payment.statusName }}</view>
+        <view wx:if="{{payment.status === '2'}}" class="color-yellow">{{ payment.statusName }}</view>
+
+        <view class="carpark-search-nonumcard-left">
+          <view class="nonum-carnum-font24 color-subcontent">进场时间</view>
+          <view style='margin-top:10rpx;' class="color-content">{{recordInfo.entryTime }}</view>
+        </view>
+        <view class="carpark-search-nonumcard-right">
+          <view class="nonum-carnum-font24 color-subcontent">停车时长</view>
+          <view style='margin-top:10rpx;' class="color-content">{{ payment.parkingTimeStr || '不到一分钟' }}</view>
+        </view>
+        <view style='clear:both;'></view>
+        
+        <!-- <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'>入场时间</view>
+        <view>{{ recordInfo.entryTime }}</view>
+        <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'>停车时长</view>
+        <view>{{ payment.parkingTimeStr || '不到一分钟' }}</view> -->
+
+        <view class="card-ticket-main-leftcut"></view>
+        <view class="card-ticket-main-rightcut"></view>
+      </view>
+      <view bindtap='pickTicket' class="normal-panel-content" style='border-bottom:1px dashed #dddee1;position:relative;'>
+        <view class="payfee-price-row">
+          <view class="payfee-price-row-left">优惠券</view>
+          <view wx:if="{{payment.coupon}}" class="payfee-price-row-right">
+            <text>{{payment.couponName}}</text>
+            <i-icon type="switch" size="24" />
+          </view>
+          <view wx:if="{{!payment.coupon}}" class="payfee-price-row-right">
+            <i-icon type="switch" size="24" />
+          </view>
+        </view>
+        <view wx:if="{{payment.coupon}}" class="payfee-price-row">
+          <view class="payfee-price-row-left">抵扣时长</view>
+          <view class="payfee-price-row-right">
+            <text>{{payment.deductionTime}}</text>
+          </view>
+        </view>
+        <view wx:if="{{payment.coupon}}" class="payfee-price-row">
+          <view class="payfee-price-row-left">抵扣金额</view>
+          <view class="payfee-price-row-right">
+            <text>¥-{{payment.couponAmount}}</text>
+          </view>
+        </view>
+        <!-- <view class="card-ticket-main-leftcut"></view>
+        <view class="card-ticket-main-rightcut"></view> -->
+      </view>
+      <view class="normal-panel-content" style='border-bottom:1px dashed #dddee1;'>
+        <view class="payfee-price-row">
+          <view class="payfee-price-row-left">计费</view>
+          <view class="payfee-price-row-right">{{payment.amount}}</view>
+        </view>
+        <view wx:if="{{payment.status === '2'}}" class="payfee-price-row">
+          <view class="payfee-price-row-left">已付金额</view>
+          <view class="payfee-price-row-right">{{payment.payedAmount}}</view>
+        </view>
+        <view wx:if="{{payment.status === '2'}}" class="payfee-price-row">
+          <view class="payfee-price-row-left">未付金额</view>
+          <view class="payfee-price-row-right">{{payment.notPayedAmount}}</view>
+        </view>
+        <!-- <view class="payfee-price-row">
+          <view class="payfee-price-row-left">抵券</view>
+          <view class="payfee-price-row-right">{{payment.couponAmount}}</view>
+        </view> -->
+        <!-- <view class="payfee-price-row">
+          <view class="payfee-price-row-left">折扣({{discont}}折)</view>
+          <view class="payfee-price-row-right">-{{discontcut}}</view>
+        </view> -->
+        <view class="payfee-price-row">
+          <view class="payfee-price-row-left">应缴</view>
+          <view class="payfee-price-row-right color-yellow">¥
+            <text style='font-size:30px;'>{{payment.notPayedAmount}}</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{errorMsg}}" class="normal-panel-desc color-red text-center">
+        {{errorMsg}}
+      </view>
+      <view wx:if="{{payment.status != '1'}}" class="normal-panel-btnform">
+        <button loading="{{loading}}" type="primary" formType="submit">
+          支付
+        </button>
+      </view>
+      <view wx:if="{{payment.status === '1'}}" class="normal-panel-btnform">
+        <button wx:if="{{!parkGate}}" type="primary" bindtap="backToHome">
+          返回
+        </button>
+        <button wx:if="{{parkGate}}" type="primary" bindtap="recordPayed">
+          开闸离开
+        </button>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+  </form>
+  <view hidden='{{recordInfo}}' class="normal-panel">
+    <view class="normal-panel-title">
+      抱歉
+    </view>
+    <view class="normal-panel-content">
+      <view>未查到您的进场车辆</view>
+      <view wx:if="{{carnum}}" class="nonum-carnum-title color-red">{{carnum}}</view>
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap='backToHome'>
+        确定
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+
+  <view style='display:none;' class="welcome-bottom-btnform">
+    <form class="formid-form" bindsubmit="formSubmit" report-submit>
+      <view class="welcome-bottom-btnform-form">
+        <view class="welcome-bottom-btnform-btn">
+          <button plain class="formid-btn" style='padding:0;' form-type="submit" data-type="zhaoche">
+            <image class="erweima-png" src="../../../image/bigzhaoche.png" mode="cover"></image>
+          </button>
+        </view>
+        <view class="welcome-bottom-btnform-btn" style='margin-left:60px;'>
+          <button plain class="formid-btn" style='padding:0;' form-type="submit" data-type="kefu">
+            <image class="erweima-png" src="../../../image/bigkefu.png" mode="cover"></image>
+          </button>
+        </view>
+      </view>
+    </form>
+  </view>
+  <view class="payment-bottom-moreview color-subcontent">
+    <view bindtap='zhaoche' class="payment-bottom-moreview-leftview" style='right:0;'>
+      手动查找车牌
+    </view>
+    <!-- <view bindtap='callwuye' class="payment-bottom-moreview-rightview">
+      求助物业
+    </view> -->
+  </view>
+</view>
+
+<i-modal title="求助物业" visible="{{ showWuye }}" actions="{{ wuyeActions }}" bind:click="handleCallWuye">
+    <view class="normal-modalline">您可以通过【扫码】或者【手动查找车牌】来完成缴费离场。</view>
+    <view class="normal-modalline"></view>
+    <view class="normal-modalline">当您通过以上手段仍然无法查询到您的入场车辆信息，</view>
+    <view class="normal-modalline">您可以联系物业帮忙</view>
+    <view class="normal-modalline">联系电话</view>
+    <view class="normal-modalline">{{appWuyeTel}}</view>
+</i-modal>
+<i-toast id="toast" />

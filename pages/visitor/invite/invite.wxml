@@ -1,0 +1,78 @@
+<!--pages/home/visitor/invite.wxml-->
+<import src="../../../common/foot.wxml" />
+<view class="normal-container">
+  <form wx:if="{{!isAgain}}" bindsubmit="checkInvite" report-submit>
+    <view wx:if="{{!isAgain}}" class="normal-panel">
+      <view class="normal-panel-title">
+        访客邀请
+      </view>
+      <i-panel>
+        <i-input name="vname" value="{{ visitorname }}" maxlength='32' type='text' title="被邀请人" placeholder="请输入被邀请人名字" />
+        <i-input bind:change="phoneChange" name="vphone" value="{{ visitorphone }}" maxlength='11' type="number" title="预约电话" placeholder="请输入预约手机号" />
+        <picker mode="date" value="{{visitDate}}" bindchange="bindDateChange">
+          <i-input value="{{ visitDate }}" disabled title="到访日期" autofocus placeholder="请选择到访日期" />
+        </picker>
+        <picker mode="time" value="{{visitorStartTime}}" end="{{visitorEndTime}}" bindchange="bindStartTimeChange">
+          <i-input value="{{ visitorStartTime }}" disabled title="开放时间" autofocus placeholder="请选择到访开放时间" />
+        </picker>
+        <picker mode="time" value="{{visitorEndTime}}" start="{{visitorStartTime}}" bindchange="bindEndTimeChange">
+          <i-input value="{{ visitorEndTime }}" disabled title="截止时间" autofocus placeholder="请选择到访截止时间" />
+        </picker>
+      </i-panel>
+      <view class="normal-panel-desc">
+        访客只能在【开放时间～截止时间】时间段内到访，才能使用门禁二维码。
+      </view>
+      <view hidden='{{!errorTimes}}' class="normal-panel-desc">
+        抱歉,该访客在以下时间段内已经有预约 \n 
+        <text class="color-red">{{errorTimes}}</text>
+      </view>
+      <view class="normal-panel-btnform">
+        <!-- <button open-type='share' type="primary">
+          邀请
+        </button> -->
+        <button hidden='{{isSent}}' type="primary" formType="submit">
+          邀请
+        </button>
+        <button hidden='{{!isSent}}' type="primary" bindtap='backToHome'>
+          返回
+        </button>
+      </view>
+    </view>
+  </form>
+
+  <!-- <form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="mg20 text-center">
+      <i-input value="{{ name }}" title="被邀请人" placeholder="请输入被邀请人名字" />
+      <i-input value="{{ phone }}" type="number" title="预约电话" placeholder="请输入预约手机号" />
+      <picker mode="date" value="{{visitDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <i-input value="{{ visitDate }}" disabled title="到访日期" autofocus placeholder="请选择到访日期" />
+      </picker>
+    </view>
+    <view class="mg20 text-center">
+      <i-button i-class="normal-btn wd40cen" bind:click="checkInvite" type="info" shape="circle" size="small">
+        新建邀请函
+      </i-button>
+    </view>
+  </form> -->
+
+  <i-action-sheet visible="{{ showChoose }}" actions="{{ inviteTypes }}" show-cancel bind:cancel="cancelInvite" bind:click="chooseInvite" />
+</view>
+<view hidden="{{hidInviteLetter}}" class="normal-mask"></view>
+<view hidden="{{hidInviteLetter}}" class="normal-panel">
+  <view class="normal-panel-title">
+    邀请函
+  </view>
+  <i-panel>
+    <i-input value="{{ invitation.visitorName }}" disabled title="被邀请人" />
+    <i-input value="{{ invitation.telphone }}" disabled type="number" title="预约电话" />
+    <i-input value="{{ visitDate }}" disabled title="到访日期" />
+    <i-input value="{{ visitorStartTime+'~'+visitorEndTime }}" disabled title="到访时段" />
+  </i-panel>
+  <view class="normal-panel-btnform">
+    <!-- open-type="share" -->
+    <button type="primary" bindtap="showChoose">
+      发送
+    </button>
+  </view>
+</view>
+<i-toast id="toast" />

@@ -1,0 +1,120 @@
+/* pages/carpark/payfee/payfee.wxss */
+
+.nonum-carnum-title {
+  font-size: 70rpx;
+  padding: 20rpx;
+}
+
+.nonum-carnum-font24 {
+  font-size: 24rpx;
+}
+
+.payfee-price-row {
+  position: relative;
+  clear: both;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 20px;
+  border-bottom: dashed 1px #f8f8f9;
+  font-size: 14px;
+}
+
+.payfee-price-row-left {
+  float: left;
+}
+
+.payfee-price-row-right {
+  float: right;
+}
+
+.payfee-normal-panel {
+  position: absolute;
+  border-radius: 5rpx;
+}
+
+.card-ticket-main-leftcut {
+  position: absolute;
+  bottom: -15rpx;
+  left: -15rpx;
+  background: #f8f8f9;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+}
+
+.card-ticket-main-rightcut {
+  position: absolute;
+  bottom: -15rpx;
+  right: -15rpx;
+  background: #f8f8f9;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+}
+
+.welcome-bottom-btnform {
+  position: fixed;
+  /* top:540px; */
+  left: 20rpx;
+  right: 20rpx;
+  bottom: 40rpx;
+  height: 140rpx;
+  text-align: center;
+}
+
+.welcome-bottom-btnform-form {
+  position: absolute;
+  top: 50%;
+  margin-top: -70rpx;
+  left: 0;
+  right: 0;
+  height: 140rpx;
+  text-align: center;
+}
+
+.welcome-bottom-btnform-btn {
+  width: 100rpx;
+  height: 100rpx;
+  /* border: 1px solid #2db7f5; */
+  border-radius: 50%;
+  /* background-color: #2db7f5; */
+  text-align: center;
+  padding: 20rpx;
+  display: inline-block;
+  position: relative;
+}
+
+.carpark-search-nonumcard-left, .carpark-search-nonumcard-right {
+  width: 49%;
+  /* height: 50rpx; */
+  float: left;
+}
+
+.payment-bottom-moreview {
+  position: fixed;
+  left: 20rpx;
+  right: 20rpx;
+  bottom: 40rpx;
+  height: 50rpx;
+  text-align: center;
+  font-size: 30rpx;
+  text-decoration:underline;
+}
+
+.payment-bottom-moreview-leftview {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 50%;
+  top: 0;
+  text-align: center;
+}
+
+.payment-bottom-moreview-rightview {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 50%;
+  top: 0;
+  text-align: center;
+}

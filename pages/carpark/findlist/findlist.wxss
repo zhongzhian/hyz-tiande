@@ -1,0 +1,67 @@
+/* pages/findlist/findlist.wxss */
+
+.car-info-view {
+  padding: 0rpx;
+}
+
+.car-info-item {
+  margin: 10rpx 0rpx;
+  padding: 0rpx 20rpx;
+  /* border: 1px solid #dddee1; *//* border-radius: 5px; */
+  background-color: #fff;
+}
+
+.infoimage {
+  width: 100%;
+  height: 600rpx;
+}
+
+.car-info-item-desc {
+  border-bottom: 2rpx solid #dddee1;
+  padding: 10rpx 20rpx;
+  font-size: 32rpx;
+  color: #495060;
+  font-weight: 600;
+}
+
+.car-info-item-body {
+  padding-top: 10rpx;
+}
+
+.car-maybe-title {
+  margin-top: 20rpx;
+  padding: 10rpx 20rpx;
+  font-size: 36rpx;
+  color: #1c2438;
+  background-color: #fff;
+  border-top: 2rpx solid #dddee1;
+}
+
+.car-maybe-item {
+  width: 50%;
+  /* padding: 10px;
+  border: 1px solid #dddee1; *//* border-radius: 5px; */
+  display: inline-block;
+}
+
+.car-maybe-item-view {
+  background-color: #fff;
+  margin: 4rpx;
+}
+
+.car-maybe-item-desc {
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+  color: #80848f;
+  text-align: center;
+  font-weight: 600;
+}
+
+.car-maybe-item-body {
+  padding-top: 10rpx;
+}
+
+.mayimage {
+  height: 300rpx;
+  width: 100%;
+}

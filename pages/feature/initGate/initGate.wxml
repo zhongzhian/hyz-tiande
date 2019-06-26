@@ -1,0 +1,84 @@
+<!--pages/feature/initGate/initGate.wxml-->
+<view class="normal-container" style='background-color:#464854;'>
+  <view class="erweima-container color-bg">
+    <view class='erweima-code-title color-content'>{{configType || '请选择配置'}}</view>
+    <view class='erweima-code-subtitle color-subcontent'>在门禁出示二维码做配置</view>
+    <!-- <image class="erweima-code-image" src="../../../image/kaikaerweima.jpg" mode="cover"></image> -->
+    <canvas hidden='{{showChoose||showModal}}' class='erweima-canvas' canvas-id='canvas'></canvas>
+    <view wx:if="errorMsg" class="erweima-errorMsg">{{errorMsg}}</view>
+    <!-- <view hidden='{{errorMsg}}' bindtap='flashCode' class='erweima-code-subtitle color-green' style='font-size:28rpx;'>
+      <i-icon hidden='{{errorMsg}}' type="refresh" size="16" color="#19be6b"></i-icon>手动刷新</view> -->
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+
+  <view class="normal-panel-btnform initgate-btnform">
+    <button type="primary" bindtap='choose'>
+      配置
+    </button>
+  </view>
+</view>
+
+<view wx:if="{{showModal}}" class="normal-container" style='z-index:10;'>
+<!-- <view>
+
+</view> -->
+  <view class="normal-container-mask">
+    <form bindsubmit="formSubmit" report-submit>
+      <view class="normal-panel">
+        <view class="normal-panel-title">
+          {{configType}}
+        </view>
+        <!-- <i-panel>
+          <picker range="{{companyNames}}" value="{{selectCompany.organizationName}}" bindchange="bindCompanyChange">
+            <i-input value="{{ selectCompany.organizationName }}" title="所属单位" disabled placeholder="请选择所属单位" />
+          </picker>
+          <picker range="{{deptNames}}" value="{{selectDept.organizationName}}" bindchange="bindDeptChange">
+            <i-input value="{{ selectDept.organizationName }}" title="所属部门" disabled placeholder="请选择所属部门" />
+          </picker>
+          <i-input name="userName" maxlength='32' value="{{ myApplys.userName }}" type="text" title="姓名" placeholder="请输入姓名" />
+          <i-input name="idcard" maxlength='18' value="{{ myApplys.idNumber }}" type="idcard" title="身份证号" placeholder="请输入身份证号" />
+          <i-input name="phone" maxlength='11' value="{{ myApplys.telphone }}" type="number" title="电话" placeholder="请输入手机号" />
+        </i-panel> -->
+
+        <i-panel  wx:if="{{configTypeIndex === 0}}" >
+          <i-input name="buildingNum" maxlength='32' value="51000001" type="text" title="楼栋编号" />
+          <i-input name="projectNum" maxlength='32' type="text" title="项目编号" />
+        </i-panel>
+        <i-panel  wx:if="{{configTypeIndex === 1}}" >
+          <i-input name="gateway" maxlength='32' type="text" title="设备网关" />
+          <i-input name="ip" maxlength='32' type="text" title="设备ip" />
+          <i-input name="netmask" maxlength='32' value='255.255.255.0' type="text" title="子网掩码" />
+          <!-- <i-input name="newMac" maxlength='32' type="text" title="新设备mac" />
+          <i-input name="oldMac" maxlength='32' type="text" title="原设备mac" /> -->
+          <i-input name="udpPort" maxlength='32' value='9998' type="number" title="设备udp端口" />
+        </i-panel>
+        <i-panel  wx:if="{{configTypeIndex === 2}}" >
+          <i-input name="serverIp" maxlength='32' type="text" title="服务器ip" />
+          <i-input name="serverPort" maxlength='32' value='18887' type="number" title="服务器端口" />
+        </i-panel>
+
+        <!-- <i-panel  wx:if="{{configTypeIndex === 2}}" >
+          <i-input name="tcpServerIp" maxlength='32' type="text" title="tcp服务器ip" />
+          <i-input name="tcpServerPort" maxlength='32' value='18887' type="number" title="tcp服务器端口" />
+        </i-panel>
+        <i-panel  wx:if="{{configTypeIndex === 3}}" >
+          <i-input name="udpRecordServerIp" maxlength='32' type="text" title="udp记录服务器ip" />
+          <i-input name="udpRecordServerPort" maxlength='32' value='18887' type="number" title="udp记录服务器端口" />
+        </i-panel>
+        <i-panel  wx:if="{{configTypeIndex === 4}}" >
+          <i-input name="udpServerIp" maxlength='32' type="text" title="udp服务器ip" />
+          <i-input name="udpServerPort" maxlength='32' value='18887' type="number" title="udp服务器端口" />
+        </i-panel> -->
+        <view class="normal-panel-btnform">
+          <button formType="submit" type="primary">
+            生成二维码
+          </button>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>
+
+
+<i-action-sheet visible="{{ showChoose }}" actions="{{ configTypes }}" show-cancel bind:cancel="cancelConfig" bind:click="chooseConfig" />
+<i-toast id="toast" />

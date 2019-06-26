@@ -1,0 +1,98 @@
+<!--pages/info/info.wxml-->
+<!-- <view class="i-steps-demo">
+  <i-steps current="{{current}}">
+    <i-step icon="picture">
+      <view slot="title">
+        确认车辆
+      </view>
+      <view slot="content">
+        请根据图片以及信息确认车辆
+      </view>
+    </i-step>
+    <i-step icon="scan">
+      <view slot="title">
+        扫码
+      </view>
+      <view slot="content">
+        请扫电梯二维码以确定您目前位置
+      </view>
+    </i-step>
+  </i-steps>
+</view> -->
+
+<!-- <view class="info-view">
+    <view class="info-carnum50">{{info.parkingLotName || '--'}}
+      <text class="info-desc">停车场</text>
+    </view>
+    <view class="info-carnum50">{{info.parkingTime || '--'}}
+      <text class="info-desc">停车时间</text>
+    </view>
+  </view> -->
+<view class="info-view">
+  <view class="info-carnum">{{info.licensePlateNumber || '--'}}
+    <text class="info-desc">车牌号</text>
+  </view>
+  <!-- <view class="info-carnum">{{info.vehicleModel || '--'}}
+    <text class="info-desc">车型</text>
+  </view>
+  <view class="info-carnum">{{info.vehicleColor || '--'}}
+    <text class="info-desc">颜色</text>
+  </view> -->
+
+  <view class="info-carnum">¥{{fee}}
+    <text class="info-desc">费用</text>
+  </view>
+</view>
+
+<!-- <view class="info-view">
+    <view class="info-carnum50">{{info.serialNumber || '--'}}
+      <text class="info-desc">车位号</text>
+    </view>
+    <view class="info-carnum50">{{info.psType || '--'}}
+      <text class="info-desc">车位类型</text>
+    </view>
+  </view> -->
+<!-- <view class="info-detail">
+  <view class="info-detail-item1">车牌号:{{info.licensePlateNumber || '-'}}</view>
+  <view class="info-detail-item1">车型:{{info.vehicleModel || '-'}}</view>
+  <view class="info-detail-item1">颜色:{{info.vehicleColor || '-'}}</view>
+</view> -->
+<view class="step-view">
+  <image class="image" src="{{info.vehiclePicture}}" lazy-load="true" mode="aspectFit" style="width: 100%; height: 100%;" />
+</view>
+
+<view class="info-detail">
+  <view class="info-detail-item2">
+    <text class="info-detail-label">停车时间:</text>
+    <text class="info-detail-text">{{info.parkingTime || '-'}}</text>
+  </view>
+  <view class="info-detail-item2">
+    <text class="info-detail-label">停车场:</text>
+    <text class="info-detail-text">{{info.parkingLot.name || '-'}}</text>
+  </view>
+  <view class="info-detail-item2">
+    <text class="info-detail-label">楼层:</text>
+    <text class="info-detail-text">{{info.parkingLot.floor || '-'}}</text>
+  </view>
+  <view class="info-detail-item2">
+    <text class="info-detail-label">车位号:</text>
+    <text class="info-detail-text">{{info.serialNumber || '-'}}</text>
+  </view>
+  <view class="info-detail-item2">
+    <text class="info-detail-label">车位类型:</text>
+    <text class="info-detail-text">{{info.psType || '-'}}</text>
+  </view>
+</view>
+<view class="formbtn">
+  <!-- <i-button i-class="step-btn" bind:click="goPosition" type="primary" shape="circle" size="small">
+    引导车位
+  </i-button> -->
+
+  <i-button i-class="step-btn2" bind:click="goPosition" type="primary" shape="circle" size="small">
+    引导车位
+  </i-button>
+  <i-button i-class="step-btn2" bind:click="payFee" type="success" shape="circle" size="small">
+    缴费
+  </i-button>
+</view>
+<i-toast id="toast" />

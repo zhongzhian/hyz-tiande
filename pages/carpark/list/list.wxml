@@ -1,0 +1,50 @@
+<!--pages/list/list.wxml-->
+<!-- <view class='car-list-view'>
+  <view wx:if="{{carnum}}" class="car-list-title">
+    符合车牌尾号为
+    <text style='color:#2d8cf0;'>{{ carnum }}</text> 的车
+  </view>
+  <view wx:if="{{!carnum}}" class="car-list-title">
+    <text style='color:#2d8cf0;'>{{startTime}}</text>至今的无牌车
+  </view>
+  <view wx:for="{{carList}}" wx:for-item="item" wx:for-index="bindex" class="car-list-item" data-item="{{item}}" bindtap="itemTap">
+    <view wx:if="{{carnum}}" class="car-list-item-desc">
+      <i-icon i-class="car-list-item-icon" type="coordinates" size="20" color="#2d8cf0"></i-icon>{{item.licensePlateNumber}}
+    </view>
+    <view wx:if="{{!carnum}}" class="car-list-item-desc">
+      <i-icon i-class="car-list-item-icon" type="time" size="20" color="#2d8cf0"></i-icon>{{item.parkingTime}}
+    </view>
+    <view class="car-list-item-body">
+      <image class="image" src="{{item.vehiclePicture}}" lazy-load="true" mode="aspectFit" style="width: 100%;" />
+    </view>
+  </view>
+  <i-load-more wx:if="{{carList.length === 0}}" tip="暂无数据" loading="{{ loading }}" />
+</view> -->
+
+<i-action-sheet visible="{{ showMadel }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel" bind:click="handleClick" />
+
+<view class="container" style='position:relative;padding:40rpx;'>
+  <i-load-more wx:if="{{carList.length === 0}}" tip="暂时未识别到车辆位置" loading="{{ false }}" />
+  <view wx:for="{{carList}}" wx:key="item" wx:for-index="bindex" bindtap="tapMaybe" data-item="{{item}}" data-bindex="{{bindex}}" class="result-searchcard">
+    <view class="result-searchcard-imgcontent">
+      <image class="result-searchcard-imgcontent-img" src="{{item.vehiclePicture}}" lazy-load="true" mode="aspectFit" />
+    </view>
+    <view class="result-searchcard-content">
+      <view class="result-searchcard-content-text color-content">{{item.licensePlateNumber}}</view>
+      <view wx:if="{{carInfo.parkingLot}}" class="result-searchcard-content-textdesc color-disabled">
+        <text class="result-searchcard-content-textlabel">停车场：</text>
+        <text class="color-subcontent">{{item.parkingLot.name}}</text>
+      </view>
+      <view wx:if="{{carInfo.parkingArea}}" class="result-searchcard-content-textdesc color-disabled">
+        <text class="result-searchcard-content-textlabel">区域：</text>
+        <text class="color-subcontent">{{item.parkingArea.name}}</text>
+      </view>
+      <view class="result-searchcard-content-textdesc color-disabled">
+        <text class="result-searchcard-content-textlabel">停车位：</text>
+        <text class="color-subcontent">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<i-toast id="toast" />

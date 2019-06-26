@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "门禁二维码",
+  "navigationBarBackgroundColor": "#464854",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "i-spin": "../../../dist/spin/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index"
+    }
+}

@@ -1,0 +1,81 @@
+<!--pages/carpark/nonum/nonum.wxml-->
+<view class="normal-container">
+  <!-- carStatus:车辆牌照状态，1是无牌，2是有牌 -->
+  <form hidden='{{carStatus != 1}}' bindsubmit="confirmCarnum" report-submit>
+    <view class="normal-panel">
+      <view class="normal-panel-title">
+        无牌照车进场
+      </view>
+      <view class="normal-panel-content">
+        <view wx:if="{{carnum}}">给您分配的临时牌照如下</view>
+        <view wx:if="{{carnum}}" class="nonum-carnum-title color-red">{{carnum}}</view>
+        <view class="nonum-carnum-font24 color-subcontent">当前闸机口</view>
+        <view class="color-yellow">{{ parkGate }}</view>
+        <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'>进场时间</view>
+        <view>{{ intime }}</view>
+      </view>
+      <view wx:if="{{carnum}}" class="normal-panel-desc">
+        <view>进场后您可以在小程序的
+          <text class="color-yellow">智能寻车-无牌车</text> 中查看到您的停车信息</view>
+      </view>
+      <view class="normal-panel-btnform">
+        <button wx:if="{{!carnum}}" type="primary" formType="submit">
+          开闸
+        </button>
+        <button wx:if="{{carnum}}" type="primary" bindtap='backToHome'>
+          确定
+        </button>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+
+    <!-- <view class="normal-panel">
+      <view class="normal-panel-title">
+        无牌照车进场
+      </view>
+      <view class="normal-panel-content">
+        <view wx:if="{{carnum}}">给您分配的临时牌照如下</view>
+        <view wx:if="{{carnum}}" class="nonum-carnum-title color-red">{{carnum}}</view>
+        <view class="nonum-carnum-font24 color-subcontent">当前闸机口</view>
+        <view class="color-yellow">{{ parkGate }}</view>
+        <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'>进场时间</view>
+        <view>{{ intime }}</view>
+      </view>
+      <view class="normal-panel-desc">
+        <view>进场后您可以在小程序的
+          <text class="color-yellow">智能寻车-无牌车</text> 中查看到您的停车信息</view>
+      </view>
+      <view class="normal-panel-btnform">
+        <button type="primary" formType="submit">
+          开闸
+        </button>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view> -->
+  </form>
+  <view hidden='{{carStatus != 2}}' class="normal-panel">
+    <view class="normal-panel">
+      <view class="normal-panel-title">
+        牌照车
+      </view>
+      <view class="normal-panel-content">
+        <view>您的牌照是</view>
+        <view class="nonum-carnum-title color-red">{{carnum}}</view>
+        <view class="nonum-carnum-font24 color-subcontent">当前闸机口</view>
+        <view class="color-yellow">{{ parkGate }}</view>
+        <view class="nonum-carnum-font24 color-subcontent" style='margin-top:10rpx;'>进场时间</view>
+        <view>{{ intime }}</view>
+      </view>
+      <view class="normal-panel-desc">
+        <view>进场后您可以在小程序中查到您的车辆</view>
+      </view>
+      <view class="normal-panel-btnform">
+        <button type="primary" bindtap="backToHome">
+          确定
+        </button>
+      </view>
+      <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+    </view>
+  </view>
+</view>
+<i-toast id="toast" />

@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "智能寻车",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "i-icon": "../../../dist/icon/index",
+    "i-toast": "../../../dist/toast/index",
+    "i-switch": "../../../dist/switch/index",
+    "i-tabs": "../../../dist/tabs/index",
+    "i-tab": "../../../dist/tab/index",
+    "i-button": "../../../dist/button/index",
+    "i-notice-bar": "../../../dist/notice-bar/index"
+  }
+}

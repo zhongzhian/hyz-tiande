@@ -1,0 +1,7 @@
+/* pages/home/visitor/invitation.wxss */
+.invitation-rowtitle{
+  padding-top:20rpx;
+}
+.invitation-row{
+  padding:0 20rpx;
+}

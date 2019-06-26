@@ -1,0 +1,35 @@
+<!--pages/card/addTicket/addTicket.wxml-->
+<view class="normal-container">
+  <view wx:if='{{ticketInfo}}' class="normal-panel">
+    <view class="normal-panel-title">
+      优惠券
+    </view>
+    <view class="normal-panel-content">
+      <view>{{ticketInfo.couponName}}</view>
+    </view>
+    <view class="normal-panel-btnform">
+      <button wx:if="{{hasPick}}" disabled type="primary" bindtap='doPick'>
+        此券已被领取
+      </button>
+      <button wx:if="{{!hasPick}}" type="primary" bindtap='doPick'>
+        领取
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+  <view wx:if='{{!ticketInfo}}' class="normal-panel">
+    <view class="normal-panel-title">
+      抱歉
+    </view>
+    <view class="normal-panel-desc">
+      没有找到优惠券
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap="backToHome">
+        返回首页
+      </button>
+    </view>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+</view>
+<i-toast id="toast" />

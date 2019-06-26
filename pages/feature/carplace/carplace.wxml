@@ -1,0 +1,97 @@
+<!--pages/mine/carplace/carplace.wxml-->
+<view class="position-container">
+  <!-- <view class="page-head">
+    <view class="page-head-result">{{carResult}}</view>
+    <view class="page-head-line"></view>
+    <view class="page-head-desc">{{myloc}}</view>
+  </view> -->
+  <view class="position-region">
+    <view bindtap='areaSelect' wx:for="{{areas}}" data-item="{{item}}" wx:for-item="item" wx:for-index="bindex">
+      <view style="background-color: {{colors[bindex]}}" class="position-region-point">
+      </view>
+      <text class="position-region-text">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="result-body">
+    <movable-area>
+      <movable-view x="{{x}}" y="{{y}}" out-of-bounds="true" bindchange="onChange" bindscale="onScale" scale="{{canScale}}" scale-min="0.1" scale-max="5" scale-value="{{scale}}" direction="all">
+        <view hidden='{{!myRent}}' style="left:{{carLeft+ 'px'}};top:{{carTop+ 'px'}};" class="pointdefault carposition" animation="{{textLeftAnimation}}"></view>
+        <view hidden='{{!myRent}}' style="left:{{carLeft+ 'px'}};top:{{carTop+ 'px'}};" class="pointdefault carposition"></view>
+        <image class="image " src="{{svgUrl}} " lazy-load="true " mode="center " style="width: 100%; height: 100%; position:relative;">
+          <canvas canvas-id="myCanvas" bindtouchstart="canvasTap" style="width: 100%;height: 100%;position:absolute;top:0;" />
+        </image>
+
+        <!-- width: 100%;height: 100%; -->
+      </movable-view>
+    </movable-area>
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
+  </view>
+  <view class="info-view ">
+    <picker class="info-carnum " mode="selector" value="{{index}}" range="{{parkingLotNames}}" bindchange="bindLotChange">
+      <view>{{parkingLot.name || '--'}}
+        <text class="info-desc ">停车场</text>
+      </view>
+    </picker>
+    <!-- <view class="info-carnum ">{{info.parkingLot.name || '--'}}
+      <text class="info-desc ">停车场</text>
+    </view> -->
+    <view bindtap='fetchFloorArea' class="info-carnum ">{{parkingArea.name || '--'}}
+      <text class="info-desc ">区域</text>
+    </view>
+    <view bindtap='fetchSpace' class="info-carnum ">{{parkingPlace.label || '请选择'}}
+      <text class="info-desc ">车位号</text>
+    </view>
+  </view>
+
+  <!-- <view class="formbtn ">
+    <view class='formbtn-btn' style="margin-right:60px; ">
+      <i-icon i-class='position-icon' bindtap='zoomMax' type="fullscreen " size="30 " color="#80848f "></i-icon>
+      <view class="position-text ">放大</view>
+    </view>
+    <view class='formbtn-btn'>
+      <i-icon i-class='position-icon' bindtap='zoomMin' type="narrow " size="30 " color="#80848f "></i-icon>
+      <view class="position-text ">缩小</view>
+    </view>
+  </view> -->
+
+  <view wx:if="{{selectType === 'area'}}" class="feature-carplace-formbtn">
+    <view class="formbtn-overflowX" style='text-align:left;'>
+      <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+        <view style="border-color: {{(parkingArea.id === item.id)? colors[bindex]:'#dddee1'}};" bindtap='areaSelect' wx:for="{{areas}}" data-item="{{item}}" wx:for-item="item" wx:for-index="bindex" class='formbtn-btn2 color-border'>
+          <view style="background-color: {{colors[bindex]}};margin-right:10rpx;" class="position-region-point">
+          </view>
+          <text class="position-text2 color-subcontent">{{item.name}}</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view wx:if="{{selectType === 'place'}}" class="feature-carplace-formbtn">
+    <view class="formbtn-overflowX" style='text-align:left;'>
+      <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+        <view style="border-color: {{(parkingPlace.id === item.id)? colors[0]:'#dddee1'}};" bindtap='placeSelect' wx:for="{{places}}" data-item="{{item}}" wx:for-item="item" wx:for-index="bindex" class='formbtn-btn2 color-border'>
+          <!-- <view style="background-color: {{colors[bindex]}};margin-right:10rpx;" class="position-region-point">
+          </view> -->
+          <text class="position-text2 color-subcontent">{{item.label}}</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+
+<!-- <view hidden='{{myRent}}' class="normal-mask">
+  <view class="normal-panel" style='top:20%;'>
+    <view class="normal-panel-title">
+      选择区域
+    </view>
+    <view class="normal-panel-desc">
+      您目前没有租用车位
+    </view>
+    <view class="normal-panel-btnform">
+      <button type="primary" bindtap='backPre'>
+        返回
+      </button>
+    </view>
+  </view>
+</view> -->
+<i-toast id="toast" />
